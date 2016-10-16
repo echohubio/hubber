@@ -1,0 +1,44 @@
+{
+  "name": "hubber",
+  "version": "0.0.1",
+  "private": true,
+  "description": "EchoHub Hubber",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:johnf/hubber.git"
+  },
+  "author": "John Ferlito",
+  "license": "???",
+  "bugs": {
+    "url": "https://github.com/johnf/hubber/issues"
+  },
+  "scripts": {
+    "dev": "nodemon -w src --exec 'babel-node app.js --presets latest'",
+    "build": "babel src -s -D -d dist",
+    "start": "node dist",
+    "prestart": "npm run -s build",
+    "test": "eslint src"
+  },
+  "homepage": "https://echohub.io",
+  "dependencies": {
+    "babel-cli": "^6.4.0",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "jade": "^1.11.0",
+    "morgan": "^1.7.0",
+    "node-sass-middleware": "^0.9.8",
+    "serve-favicon": "^2.3.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-es2017": "^6.16.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "html-webpack-plugin": "^2.22.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-middleware": "^1.8.4",
+    "webpack-hot-middleware": "^2.13.0"
+  }
+}
