@@ -5,6 +5,9 @@ import favicon from 'serve-favicon';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
+import session from 'express-session';
+import fileSession from 'session-file-store';
+import Grant from 'grant-express';
 
 import routes from './routes/index';
 import auth from './routes/auth';
@@ -15,6 +18,46 @@ app.server = http.createServer(app);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+// Set up sessions
+// TODO: create a new secret and persist it
+const fileStoreOptions = {
+};
+const FileStore = fileSession(session);
+const sessionOptions = {
+  secret: 'reallySecret',
+  store: new FileStore(fileStoreOptions),
+  resave: false,
+  saveUninitialized: false
+};
+app.use(session(sessionOptions));
+
+// Set up oauth
+// TODO: What are we going to do longer term about the secret key?
+const grantOptions = {
+  server: {
+    protocol: 'http',
+    host: 'localhost:3000',
+    transport: 'session',
+    callback: '/auth/callback',
+    state: true
+  },
+  echohub: {
+    authorize_url: 'http://localhost:3001/alexa/link',
+    //authorize_url: 'https://www.echohub.io/alexa/link',
+    access_url: 'https://www.echohub.io/api/oauth2/token',
+    oauth: 2,
+    key: 'hubber',
+    secret: '15a3ba899397432aace0f776499c6a2f',
+    scope: ['read', 'write'],
+  }
+};
+const grant = new Grant(grantOptions);
+app.use(grant);
+app.get('/handle_echohub_callback', (req, res) => {
+  console.log(req.session.grant.response);
+  res.end(JSON.stringify(req.session.grant.response, null, 2));
+});
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
