@@ -25,8 +25,9 @@ const fileStoreOptions = {
 };
 const FileStore = fileSession(session);
 const sessionOptions = {
-  secret: 'reallySecret',
+  secret: 'aeffc8dd-1c13-4686-9637-365e2eaf6141',
   store: new FileStore(fileStoreOptions),
+  cookie: { maxAge: 365 * 24 * 60 * 60 * 1000 },
   resave: false,
   saveUninitialized: false
 };
