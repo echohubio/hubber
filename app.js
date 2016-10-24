@@ -11,6 +11,7 @@ import Grant from 'grant-express';
 
 import routes from './routes/index';
 import auth from './routes/auth';
+import iot from './routes/iot';
 
 const app = express();
 app.server = http.createServer(app);
@@ -44,8 +45,7 @@ const grantOptions = {
     state: true
   },
   echohub: {
-    authorize_url: 'http://localhost:3001/alexa/link',
-    //authorize_url: 'https://www.echohub.io/alexa/link',
+    authorize_url: 'https://www.echohub.io/alexa/link',
     access_url: 'https://www.echohub.io/api/oauth2/token',
     oauth: 2,
     key: 'hubber',
@@ -76,6 +76,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/auth', auth);
+app.use('/iot', iot);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

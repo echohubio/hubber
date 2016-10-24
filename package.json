@@ -31,6 +31,8 @@
     "jade": "^1.11.0",
     "morgan": "^1.7.0",
     "node-sass-middleware": "^0.9.8",
+    "node-storage": "0.0.7",
+    "phetch": "0.0.10",
     "serve-favicon": "^2.3.0",
     "session-file-store": "^0.2.2",
     "uuid": "^2.0.3"
