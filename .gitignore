@@ -34,3 +34,6 @@ public/stylesheets
 
 # Sessions
 sessions
+
+# App Data and State
+data
