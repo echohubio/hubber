@@ -51,6 +51,7 @@ const grantOptions = {
     key: 'hubber',
     secret: '15a3ba899397432aace0f776499c6a2f',
     scope: ['read', 'write'],
+    transport: 'session',
   }
 };
 const grant = new Grant(grantOptions);
