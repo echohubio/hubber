@@ -22,8 +22,6 @@ router.get('/create', (req, res) => {
     .catch(err => {
       res.send(`Error: ${err}`);
     });
-
-
 });
 
 router.get('/ping', (req, res) => {
