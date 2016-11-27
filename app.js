@@ -32,7 +32,7 @@ const sessionOptions = {
   store: new FileStore(fileStoreOptions),
   cookie: { maxAge: 365 * 24 * 60 * 60 * 1000 },
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
 };
 app.use(session(sessionOptions));
 
@@ -44,7 +44,7 @@ const grantOptions = {
     host: 'localhost:3000',
     transport: 'session',
     callback: '/auth/callback',
-    state: true
+    state: true,
   },
   echohub: {
     authorize_url: 'https://www.echohub.io/alexa/link',
@@ -54,7 +54,7 @@ const grantOptions = {
     secret: '15a3ba899397432aace0f776499c6a2f',
     scope: ['read', 'write'],
     transport: 'session',
-  }
+  },
 };
 const grant = new Grant(grantOptions);
 app.use(grant);
@@ -73,8 +73,9 @@ app.use(require('node-sass-middleware')({
   dest: path.join(__dirname, 'public/stylesheets'),
   prefix: '/stylesheets',
   indentedSyntax: true,
-  sourceMap: true
+  sourceMap: true,
 }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
@@ -83,7 +84,7 @@ app.use('/iot', iot);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  var err = new Error('Not Found');
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
@@ -97,7 +98,7 @@ if (app.get('env') === 'development') {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
-      error: err
+      error: err,
     });
   });
 }
@@ -108,13 +109,13 @@ app.use((err, req, res) => {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
-    error: {}
+    error: {},
   });
 });
 
 app.server.listen(process.env.PORT || 3000);
 
-/*eslint no-console: "off"*/
+/* eslint no-console: "off" */
 console.log(`Started on port ${app.server.address().port}`);
 
 module.exports = app;

@@ -11,15 +11,15 @@ router.get('/create', (req, res) => {
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json')
     .set('Authorization', session)
-    .then(res => res.json())
-    .then(iot => {
+    .then(response => response.json())
+    .then((iot) => {
       config.put('iot', iot);
     })
     .then(() => {
       const iot = config.get('iot');
       res.send(`\n Setup IOT \n<code>${JSON.stringify(iot, null, '  ')}</code>`);
     })
-    .catch(err => {
+    .catch((err) => {
       res.send(`Error: ${err}`);
     });
 });
@@ -31,11 +31,11 @@ router.get('/ping', (req, res) => {
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json')
     .set('Authorization', session)
-    .then(res => res.json())
-    .then(data => {
+    .then(response => response.json())
+    .then((data) => {
       res.send(`<code>${JSON.stringify(data)}</code>`);
     })
-    .catch(err => {
+    .catch((err) => {
       res.send(`Error: ${err}`);
     });
 });
