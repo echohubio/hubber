@@ -13,6 +13,8 @@ import routes from './routes/index';
 import auth from './routes/auth';
 import iot from './routes/iot';
 
+import './lib/iot';
+
 const app = express();
 app.server = http.createServer(app);
 

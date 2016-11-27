@@ -38,8 +38,6 @@ router.get('/ping', (req, res) => {
     .catch(err => {
       res.send(`Error: ${err}`);
     });
-
-
 });
 
 module.exports = router;
