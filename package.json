@@ -14,7 +14,7 @@
     "url": "https://github.com/johnf/hubber/issues"
   },
   "scripts": {
-    "dev": "nodemon -w lib -w plugins -w routes -w app.js --exec 'babel-node app.js --presets latest'",
+    "dev": "nodemon -w lib -w plugins -w routes -w app.js --exec 'babel-node app.js'",
     "build": "babel src -s -D -d dist",
     "start": "node dist",
     "prestart": "npm run -s build",
@@ -49,6 +49,7 @@
     "eslint-plugin-jsx-a11y": "^3.0.1",
     "eslint-plugin-react": "^6.7.1",
     "html-webpack-plugin": "^2.22.0",
+    "nodemon": "^1.11.0",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.0"
