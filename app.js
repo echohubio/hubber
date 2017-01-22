@@ -1,3 +1,5 @@
+/* eslint no-console: "off" */
+
 import http from 'http';
 import express from 'express';
 import path from 'path';
@@ -8,12 +10,53 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import fileSession from 'session-file-store';
 import Grant from 'grant-express';
+import architect from 'architect';
+
+import Debug from 'debug';
 
 import routes from './routes/index';
 import auth from './routes/auth';
 import iot from './routes/iot';
 
-import './lib/iot';
+const debug = Debug('hubber');
+
+// /////////////////////////////////
+// Set up plugins
+// ////////////////////////////////
+
+// TODO: Check for safe-recovery config and go into setup mode
+const configPath = path.join(__dirname, 'config.js');
+const config = architect.loadConfig(configPath);
+
+architect.createApp(config, (err, app) => {
+  if (err) {
+    // TODO: Show some error in web app
+    throw err;
+  }
+  debug('plugins ready');
+
+  const thingShadows = app.services.iot.thingShadows;
+  thingShadows.on('message', (topic, payloadJSON) => {
+    debug(`received message on topic ${topic}`, payloadJSON.toString());
+    const pluginName = topic.split('/')[2];
+    const payload = JSON.parse(payloadJSON);
+
+    debug(app.services);
+    const plugin = app.services[pluginName];
+    if (!plugin) {
+      debug(`plugin ${pluginName} not installed`);
+      // TODO: log this and expose in web portal somehow or notify the user
+
+      return;
+    }
+
+    plugin.execute(payload);
+  });
+});
+
+// /////////////////////////////////
+// Set up express
+// ////////////////////////////////
 
 const app = express();
 app.server = http.createServer(app);
@@ -115,7 +158,6 @@ app.use((err, req, res) => {
 
 app.server.listen(process.env.PORT || 3000);
 
-/* eslint no-console: "off" */
 console.log(`Started on port ${app.server.address().port}`);
 
 module.exports = app;
