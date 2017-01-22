@@ -41,7 +41,6 @@ architect.createApp(config, (err, app) => {
     const pluginName = topic.split('/')[2];
     const payload = JSON.parse(payloadJSON);
 
-    debug(app.services);
     const plugin = app.services[pluginName];
     if (!plugin) {
       debug(`plugin ${pluginName} not installed`);
