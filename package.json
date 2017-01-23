@@ -14,7 +14,7 @@
     "url": "https://github.com/johnf/hubber/issues"
   },
   "scripts": {
-    "dev": "nodemon -w lib -w plugins -w routes -w app.js --exec 'babel-node app.js'",
+    "dev": "nodemon -V -w lib -w plugins -w routes -w app.js --exec 'babel-node app.js'",
     "build": "babel src -s -D -d dist",
     "start": "node dist",
     "prestart": "npm run -s build",
@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-object-rest-spread": "^6.22.0",
     "babel-preset-latest": "^6.16.0",
     "eslint": "^3.11.0",
     "eslint-config-airbnb": "^14.0.0",

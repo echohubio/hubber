@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
     res.render('index', { title: 'EchoHub - Hubber' });
   } else {
     const authenticated = req.session && req.session.grant && !!req.session.grant.response.access_token;
-    const connected = !!config.get('iot');
+    const connected = !!config.get('connected');
     const params = {
       title: 'EchoHub - Hubber',
       authenticated,
@@ -29,6 +29,7 @@ router.get('/', (req, res) => {
 router.get('/finalise', (req, res) => {
   config.set('configured', true);
   res.redirect('/');
+  // TODO: Workout how to restart ourselves here
 });
 
 export default router;
