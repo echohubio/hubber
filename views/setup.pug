@@ -6,26 +6,27 @@ block content
 
   h2 Setup Steps
 
-  if authenticated
-    div.alert.alert-success(role='alert')
-      span.glyphicon.glyphicon-ok-circle
-      span.sr-only OK
-      span &nbsp; You have authenticated
-  else
-    div.alert.alert-warning(role='alert')
-      span.glyphicon.glyphicon-exclamation-sign
-      span.sr-only Error:
-      span You need to authenticate to EchoHub #[a(href="/connect/echohub") Click to Authenticate]
-
-  if connected
-    div.alert.alert-success(role='alert')
-      span.glyphicon.glyphicon-ok-circle
-      span.sr-only OK
-      span &nbsp;
-      span You have connected
-  else
+  if !authenticated
     div.alert.alert-danger(role='alert')
       span.glyphicon.glyphicon-exclamation-sign
       span.sr-only Error:
       span &nbsp;
-      span You need to connect to EchoHub #[a(href="/iot/create") Click to Connect]
+      span You need to authenticate to EchoHub #[a(href="/connect/echohub") Click to Authenticate]
+  else
+    div.alert.alert-success(role='alert')
+      span.glyphicon.glyphicon-ok-circle
+      span.sr-only OK
+      span &nbsp; You have authenticated
+
+    if !connected
+     div.alert.alert-danger(role='alert')
+        span.glyphicon.glyphicon-exclamation-sign
+        span.sr-only Error:
+        span &nbsp;
+        span You need to connect to EchoHub #[a(href="/iot/create") Click to Connect]
+    else
+     div.alert.alert-success(role='alert')
+        span.glyphicon.glyphicon-ok-circle
+        span.sr-only OK
+        span &nbsp;
+        span You have connected

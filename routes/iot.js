@@ -1,6 +1,9 @@
 import express from 'express';
 import phetch from 'phetch';
+import Debug from 'debug';
 import * as config from '../lib/config';
+
+const debug = Debug('hubber:route:iot');
 
 const router = express.Router();
 
@@ -13,11 +16,12 @@ router.get('/create', (req, res) => {
     .set('Authorization', session)
     .then(response => response.json())
     .then((iot) => {
-      config.put('iot', iot);
+      debug('Connect OK');
+      debug(iot);
+      config.set('iot', iot);
     })
     .then(() => {
-      const iot = config.get('iot');
-      res.send(`\n Setup IOT \n<code>${JSON.stringify(iot, null, '  ')}</code>`);
+      res.redirect('/');
     })
     .catch((err) => {
       res.send(`Error: ${err}`);
