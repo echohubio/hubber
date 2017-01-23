@@ -9,7 +9,6 @@ const router = express.Router();
 
 const setupPlugin = (iot) => {
   const plugins = config.get('plugins');
-  debug(plugins);
   if (plugins.length !== 0) {
     throw new Error('Semi configured system');
   }
@@ -45,22 +44,6 @@ router.get('/create', (req, res) => {
     })
     .then(() => {
       res.redirect('/');
-    })
-    .catch((err) => {
-      res.send(`Error: ${err}`);
-    });
-});
-
-router.get('/ping', (req, res) => {
-  const session = req.session.grant.response.access_token;
-
-  phetch.get('https://www.echohub.io/api/ping/custom')
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/json')
-    .set('Authorization', session)
-    .then(response => response.json())
-    .then((data) => {
-      res.send(`<code>${JSON.stringify(data)}</code>`);
     })
     .catch((err) => {
       res.send(`Error: ${err}`);
