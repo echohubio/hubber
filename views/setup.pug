@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to the EchoHub Hubber
+  p Your system is currently unconfigured and we need to link it up to EchoHub to get started, please follow the steps below
+
+  h2 Setup Steps
+  if authenticated
+    p.ok You have already authenticated
+  else
+    p You need to authenticate to EchoHub
+    a(href="/connect/echohub") Click to Authenticate
