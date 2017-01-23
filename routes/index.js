@@ -7,9 +7,10 @@ const router = express.Router();
 
 const debug = Debug('hubber:route:index');
 
-const configured = config.get('configured');
 
 router.get('/', (req, res) => {
+  const configured = config.get('configured');
+
   if (configured) {
     res.render('index', { title: 'EchoHub - Hubber' });
   } else {
@@ -23,6 +24,11 @@ router.get('/', (req, res) => {
     debug(params);
     res.render('setup', params);
   }
+});
+
+router.get('/finalise', (req, res) => {
+  config.set('configured', true);
+  res.redirect('/');
 });
 
 export default router;
