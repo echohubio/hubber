@@ -2,11 +2,30 @@ extends layout
 
 block content
   h1= title
-  p Welcome to the EchoHub Hubber
-  p Your system is currently unconfigured and we need to link it up to EchoHub to get started, please follow the steps below
+  p.lead Your system is currently unconfigured and we need to link it up to EchoHub to get started, please follow the steps below
 
   h2 Setup Steps
+
   if authenticated
-    p.ok You have already authenticated
+    div.alert.alert-success(role='alert')
+      span.glyphicon.glyphicon-ok-circle
+      span.sr-only OK
+      span &nbsp; You have authenticated
   else
-    p You need to authenticate to EchoHub #[a(href="/connect/echohub") Click to Authenticate]
+    div.alert.alert-warning(role='alert')
+      span.glyphicon.glyphicon-exclamation-sign
+      span.sr-only Error:
+      span You need to authenticate to EchoHub #[a(href="/connect/echohub") Click to Authenticate]
+
+  if connected
+    div.alert.alert-success(role='alert')
+      span.glyphicon.glyphicon-ok-circle
+      span.sr-only OK
+      span &nbsp;
+      span You have connected
+  else
+    div.alert.alert-danger(role='alert')
+      span.glyphicon.glyphicon-exclamation-sign
+      span.sr-only Error:
+      span &nbsp;
+      span You need to connect to EchoHub #[a(href="/iot/create") Click to Connect]
