@@ -1,13 +1,20 @@
 import express from 'express';
+import Debug from 'debug';
+
+const debug = Debug('hubber:route:auth');
 
 const router = express.Router();
 
 router.get('/callback', (req, res) => {
   if (req.query.error) {
+    debug('Auth Error: ', req.query.error);
     res.render('auth_error', { error: JSON.stringify(req.query.error) });
   } else {
-    res.render('auth', { });
+    // In case we ever want to do something with the response
+    // res.end(JSON.stringify(req.session.grant.response, null, 2));
+    debug('Auth OK');
+    res.redirect('/');
   }
 });
 
-module.exports = router;
+export default router;
