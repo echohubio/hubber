@@ -1,6 +1,6 @@
 import express from 'express';
 import phetch from 'phetch';
-import config from '../lib/config';
+import * as config from '../lib/config';
 
 const router = express.Router();
 
@@ -40,4 +40,4 @@ router.get('/ping', (req, res) => {
     });
 });
 
-module.exports = router;
+export default router;
