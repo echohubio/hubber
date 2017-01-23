@@ -33,6 +33,7 @@
     "grant-express": "^3.6.5",
     "morgan": "^1.7.0",
     "node-sass-middleware": "^0.11.0",
+    "node-storage": "0.0.7",
     "phetch": "0.0.10",
     "pug": "^2.0.0-beta6",
     "serve-favicon": "^2.3.0",
