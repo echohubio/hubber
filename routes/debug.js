@@ -23,3 +23,5 @@ router.get('/ping', (req, res) => {
       res.send(`Error: ${err}`);
     });
 });
+
+export default router;
