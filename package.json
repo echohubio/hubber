@@ -18,7 +18,7 @@
     "build": "babel src -s -D -d dist",
     "start": "node dist",
     "prestart": "npm run -s build",
-    "lint": "eslint . --debug"
+    "lint": "eslint ."
   },
   "homepage": "https://echohub.io",
   "dependencies": {
