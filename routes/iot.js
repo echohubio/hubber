@@ -18,10 +18,10 @@ const setupPlugin = (iot) => {
 
   const newPlugins = [
     {
-      packagePath: './plugins/hubber-iot',
+      packagePath: 'hubber-iot',
       ...iot,
     },
-    '/plugins/hubber-plugins',
+    'hubber-plugins',
   ];
 
   config.set('plugins', newPlugins);

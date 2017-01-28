@@ -31,6 +31,8 @@
     "express": "^4.14.0",
     "express-session": "^1.15.0",
     "grant-express": "^3.6.5",
+    "hubber-iot": "^1.0.1",
+    "hubber-plugins": "^1.0.1",
     "morgan": "^1.7.0",
     "node-sass-middleware": "^0.11.0",
     "node-storage": "0.0.7",
