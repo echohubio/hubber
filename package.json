@@ -1,26 +1,8 @@
 {
-  "name": "hubber",
-  "version": "0.0.1",
-  "private": true,
-  "description": "EchoHub Hubber",
-  "main": "server.js",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:johnf/hubber.git"
-  },
   "author": "John Ferlito",
-  "license": "???",
   "bugs": {
     "url": "https://github.com/johnf/hubber/issues"
   },
-  "scripts": {
-    "dev": "nodemon -V -w lib -w plugins -w routes -w app.js --exec 'babel-node app.js'",
-    "build": "babel src -s -D -d dist",
-    "start": "node dist",
-    "prestart": "npm run -s build",
-    "lint": "eslint ."
-  },
-  "homepage": "https://echohub.io",
   "dependencies": {
     "architect": "github:johnf/architect#save_base_path",
     "babel-cli": "^6.4.0",
@@ -41,6 +23,7 @@
     "serve-favicon": "^2.3.0",
     "session-file-store": "^1.0.0"
   },
+  "description": "EchoHub Hubber",
   "devDependencies": {
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-object-rest-spread": "^6.22.0",
@@ -51,5 +34,22 @@
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
     "nodemon": "^1.11.0"
-  }
+  },
+  "homepage": "https://echohub.io",
+  "license": "???",
+  "main": "server.js",
+  "name": "hubber",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:johnf/hubber.git"
+  },
+  "scripts": {
+    "build": "babel src -s -D -d dist",
+    "dev": "nodemon -V -w lib -w plugins -w routes -w app.js --exec 'babel-node app.js'",
+    "lint": "eslint .",
+    "prestart": "npm run -s build",
+    "start": "node dist"
+  },
+  "version": "0.0.1"
 }
