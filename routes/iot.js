@@ -16,12 +16,15 @@ const setupPlugin = (iot) => {
     throw new Error('Semi configured system');
   }
 
-  const plugin = {
-    packagePath: './plugins/hubber-iot',
-    ...iot,
-  };
+  const newPlugins = [
+    {
+      packagePath: './plugins/hubber-iot',
+      ...iot,
+    },
+    '/plugins/hubber-plugins',
+  ];
 
-  config.set('plugins', [plugin]);
+  config.set('plugins', newPlugins);
   config.set('connected', true);
 };
 
