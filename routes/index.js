@@ -7,6 +7,8 @@ const router = express.Router();
 
 const debug = Debug('hubber:route:index');
 
+const authenticated = session => session && session.grant && session.grant.response && !!session.grant.response.access_token;
+
 
 router.get('/', (req, res) => {
   const configured = config.get('configured');
@@ -14,11 +16,10 @@ router.get('/', (req, res) => {
   if (configured) {
     res.render('index', { title: 'EchoHub - Hubber' });
   } else {
-    const authenticated = req.session && req.session.grant && !!req.session.grant.response.access_token;
     const connected = !!config.get('connected');
     const params = {
       title: 'EchoHub - Hubber',
-      authenticated,
+      authenticated: authenticated(req.session),
       connected,
     };
     debug(params);

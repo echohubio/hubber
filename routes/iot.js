@@ -8,8 +8,11 @@ const debug = Debug('hubber:route:iot');
 const router = express.Router();
 
 const setupPlugin = (iot) => {
+  debug('setup plugins');
   const plugins = config.get('plugins');
-  if (plugins.length !== 0) {
+  if (plugins.length !== 1) {
+    debug('plugin setup error');
+    debug(plugins);
     throw new Error('Semi configured system');
   }
 
