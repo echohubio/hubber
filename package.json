@@ -22,7 +22,7 @@
   },
   "homepage": "https://echohub.io",
   "dependencies": {
-    "architect": "github:c9/architect",
+    "architect": "github:johnf/architect#save_base_path",
     "babel-cli": "^6.4.0",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
