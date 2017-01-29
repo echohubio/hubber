@@ -1,7 +1,7 @@
 {
   "author": "John Ferlito",
   "bugs": {
-    "url": "https://github.com/johnf/hubber/issues"
+    "url": "https://github.com/echohubio/hubber/issues"
   },
   "dependencies": {
     "architect": "github:johnf/architect#save_base_path",
@@ -35,14 +35,14 @@
     "eslint-plugin-react": "^6.9.0",
     "nodemon": "^1.11.0"
   },
-  "homepage": "https://echohub.io",
-  "license": "???",
+  "homepage": "https://www.echohub.io",
+  "license": "ISC",
   "main": "server.js",
   "name": "hubber",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:johnf/hubber.git"
+    "url": "echohubio/hubber"
   },
   "scripts": {
     "build": "babel src -s -D -d dist",
