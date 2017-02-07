@@ -1,9 +1,8 @@
-import express from 'express';
 import Debug from 'debug';
 
 import * as config from '../lib/config';
 
-const router = express.Router();
+const router = null;
 
 const debug = Debug('hubber:route:index');
 

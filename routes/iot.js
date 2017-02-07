@@ -1,11 +1,10 @@
-import express from 'express';
 import phetch from 'phetch';
 import Debug from 'debug';
 import * as config from '../lib/config';
 
 const debug = Debug('hubber:route:iot');
 
-const router = express.Router();
+const router = null;
 
 const setupPlugin = (iot) => {
   debug('setup plugins');

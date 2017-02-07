@@ -1,9 +1,8 @@
-import express from 'express';
 import Debug from 'debug';
 
 const debug = Debug('hubber:route:auth');
 
-const router = express.Router();
+const router = null;
 
 router.get('/callback', (req, res) => {
   if (req.query.error) {

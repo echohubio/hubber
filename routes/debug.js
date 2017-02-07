@@ -1,11 +1,10 @@
-import express from 'express';
 import phetch from 'phetch';
 import Debug from 'debug';
 // import * as config from '../lib/config';
 
 const debug = Debug('hubber:route:debug');
 
-const router = express.Router();
+const router = null;
 
 router.get('/ping', (req, res) => {
   const session = req.session.grant.response.access_token;
