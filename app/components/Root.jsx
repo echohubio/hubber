@@ -4,46 +4,33 @@ import { Router, Route, IndexRoute } from 'react-router';
 
 import Layout from './Layout';
 import Home from './Home';
-// import Login from './Login';
-// import AlexaLink from './AlexaLink';
-// import Ping from './Ping';
-// import Logout from './Logout';
-// import Registration from './Registration';
-// import RegistrationValidation from './RegistrationValidation';
-// import PluginList from './PluginList';
-// import * as cognito from '../lib/cognito';
+import Setup from './Setup';
 
-// const checkAuth = store => async (nextState, replace, callback) => {
-//   const loggedIn = await cognito.isValidSession();
+const checkConfigured = store => (nextState, replace, callback) => {
+  const configured = store.configured || false;
 
-//   if (!loggedIn) {
-//     store.dispatch({ type: 'USER_SESSION_EXPIRED' });
-//     replace({ pathname: '/login', query: { returnTo: nextState.location.pathname + nextState.location.search } });
-//   }
+  if (!configured) {
+    replace({ pathname: '/setup', query: { returnTo: nextState.location.pathname + nextState.location.search } });
+  }
 
-//   callback();
-// };
+  callback();
+};
 
 const Root = ({ store }) => (
   <Provider store={store}>
     <Router history={store.history}>
-      <Route path="/" component={Layout}>
+      <Route path="/setup" component={Layout}>
+        <IndexRoute component={Setup} />
+      </Route>
+      <Route path="/" component={Layout} onEnter={checkConfigured(store)}>
         <IndexRoute component={Home} />
       </Route>
     </Router>
   </Provider>
 );
+
 /*
-            <Route path="login" component={Login} />
-            <Route path="alexa/link" component={AlexaLink} onEnter={checkAuth(store)} />
-            <Route path="debug">
-              <Route path="ping" component={Ping} onEnter={checkAuth(store)} />
-            </Route>
-            <Route path="logout" component={Logout} onEnter={checkAuth(store)} />
-            <Route path="register" component={Registration}>
-              <Route path="validate" component={RegistrationValidation} />
-            </Route>
-            <Route path="plugins" component={PluginList} />
+  <Route path="login" component={Login} />
 */
 
 export default Root;
