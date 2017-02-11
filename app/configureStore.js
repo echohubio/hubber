@@ -36,7 +36,12 @@ const configureStore = () => {
   const storagePath = path.join(app.getPath('userData'), 'config');
   const asyncStorage = new AsyncNodeStorage(storagePath);
   const persistConfig = {
-    whitelist: ['setup'],
+    whitelist: [
+      'auth',
+      'iot',
+      'plugins',
+      'setup',
+    ],
     storage: asyncStorage,
   };
   persistStore(store, persistConfig);

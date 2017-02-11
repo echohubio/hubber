@@ -26,11 +26,12 @@ export const authenticate = () => (dispatch) => {
     .then((token) => {
       dispatch({
         type: 'SETUP_SET_AUTHENTICATED',
-        // TODO: removeme
-        token,
       });
 
-      // TODO: use your token.access_token
+      dispatch({
+        type: 'AUTH_SET_TOKENS',
+        token,
+      });
 
       // TODO: use for refresh
       // myApiOauth.refreshToken(token.refresh_token)

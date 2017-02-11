@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { Alert, Glyphicon, Button } from 'react-bootstrap';
 
 import { authenticate } from '../actions/authentication';
+import { setup } from '../actions/iot';
 
 import { getConnected, getAuthenticated } from '../reducers/setup';
-
 
 const Authentication = ({ authenticated, handleAuthentication }) => {
   if (authenticated) {
@@ -25,7 +25,7 @@ const Authentication = ({ authenticated, handleAuthentication }) => {
   );
 };
 
-const Connection = ({ connected }) => {
+const Connection = ({ connected, handleConnection }) => {
   if (connected) {
     return (
       <Alert bsStyle="success">
@@ -37,7 +37,7 @@ const Connection = ({ connected }) => {
   return (
     <Alert bsStyle="danger">
       <p><Glyphicon glyph="exclamation-sign" /> You need to connect to EchoHub</p>
-      <p><Button bsStyle="primary" onClick={() => {}}>Connect</Button></p>
+      <p><Button bsStyle="primary" onClick={handleConnection}>Connect</Button></p>
     </Alert>
   );
 };
@@ -49,7 +49,7 @@ const Finalise = () => (
   </Alert>
 );
 
-const Setup = ({ authenticated, connected, handleAuthentication }) => (
+const Setup = ({ authenticated, connected, handleAuthentication, handleConnection }) => (
   <div>
     <p className="lead"> Your system is currently unconfigured and we need to link it up to EchoHub to get started, please follow the steps below</p>
 
@@ -57,7 +57,7 @@ const Setup = ({ authenticated, connected, handleAuthentication }) => (
 
     <Authentication authenticated={authenticated} handleAuthentication={handleAuthentication} />
     {authenticated &&
-      <Connection connected={connected} />
+      <Connection connected={connected} handleConnection={handleConnection} />
     }
 
     {authenticated && connected &&
@@ -73,6 +73,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   handleAuthentication: authenticate,
+  handleConnection: setup,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Setup);
