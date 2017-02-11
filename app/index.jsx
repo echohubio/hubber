@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
 
 import Raven from 'raven-js';
 
@@ -16,6 +17,20 @@ Raven.config('https://f5b7a160b6fd4105a9d29301e4161e47@sentry.io/135694').instal
 const store = configureStore();
 
 ReactDOM.render(
-  <Root store={store} />,
+  <AppContainer>
+    <Root store={store} />
+  </AppContainer>,
   document.getElementById('root'),
 );
+
+// Hot Module Replacement API
+if (module.hot) {
+  module.hot.accept('./components/Root', () => {
+    ReactDOM.render(
+      <AppContainer>
+        <Root store={store} />
+      </AppContainer>,
+      document.getElementById('root'),
+    );
+  });
+}

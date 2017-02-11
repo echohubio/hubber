@@ -1,4 +1,4 @@
 {
   "presets": ["react-app"],
-  "plugins": ["add-module-exports", "transform-object-rest-spread"]
+  "plugins": ["react-hot-loader/babel", "add-module-exports", "transform-object-rest-spread"]
 }

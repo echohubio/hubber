@@ -13,6 +13,7 @@ const port = process.env.PORT || 3001;
 export default merge(baseConfig, {
   devtool: 'inline-source-map',
   entry: [
+    'react-hot-loader/patch',
     `webpack-hot-middleware/client?path=http://localhost:${port}/__webpack_hmr`,
     'babel-polyfill',
     './app/index.jsx',
