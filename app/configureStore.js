@@ -34,7 +34,6 @@ const configureStore = () => {
 
   const app = electron.app || electron.remote.app;
   const storagePath = path.join(app.getPath('userData'), 'config');
-  console.error(storagePath);
   const asyncStorage = new AsyncNodeStorage(storagePath);
   const persistConfig = {
     whitelist: ['setup'],
@@ -42,7 +41,12 @@ const configureStore = () => {
   };
   persistStore(store, persistConfig);
 
-  console.error(store);
+  if (module.hot) {
+    module.hot.accept('./reducers', () => {
+      const nextRootReducer = require('./reducers'); // eslint-disable-line global-require
+      store.replaceReducer(nextRootReducer);
+    });
+  }
 
   return store;
 };

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import express from 'express';
+import express from 'express'; // eslint-disable-line import/no-extraneous-dependencies
 import webpack from 'webpack'; // eslint-disable-line import/no-extraneous-dependencies
 import webpackDevMiddleware from 'webpack-dev-middleware'; // eslint-disable-line import/no-extraneous-dependencies
 import webpackHotMiddleware from 'webpack-hot-middleware'; // eslint-disable-line import/no-extraneous-dependencies

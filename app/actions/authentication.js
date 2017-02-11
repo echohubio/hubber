@@ -5,8 +5,6 @@ const config = {
   clientSecret: '15a3ba899397432aace0f776499c6a2f',
   authorizationUrl: 'https://www.echohub.io/alexa/link',
   tokenUrl: 'https://www.echohub.io/api/oauth2/token',
-  useBasicAuthorizationHeader: false,
-  // redirectUri: 'http://localhost',
 };
 
 export const authenticate = () => (dispatch) => {
