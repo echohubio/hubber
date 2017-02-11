@@ -25,5 +25,7 @@ export default {
     // packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main'],
   },
   // plugins: [],
-  // externals: Object.keys(externals || {}),
+  externals: {
+    architect: 'architect',
+  },
 };

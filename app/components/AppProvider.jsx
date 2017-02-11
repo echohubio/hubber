@@ -24,8 +24,6 @@ const persistConfig = {
   storage: asyncStorage,
 };
 
-const hubber = new Hubber(store);
-
 class AppProvider extends Component {
 
   constructor() {
@@ -35,6 +33,7 @@ class AppProvider extends Component {
 
   componentWillMount() {
     persistStore(store, persistConfig, () => {
+      this.hubber = new Hubber(store);
       this.setState({ rehydrated: true });
     });
   }
@@ -45,7 +44,7 @@ class AppProvider extends Component {
     }
     return (
       <AppContainer>
-        <Root store={store} hubber={hubber} />
+        <Root store={store} hubber={this.hubber} />
       </AppContainer>
     );
   }

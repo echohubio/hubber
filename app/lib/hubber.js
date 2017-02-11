@@ -1,6 +1,7 @@
 import path from 'path';
 import architect from 'architect';
 
+
 import log from 'electron-log';
 
 class Hubber {
@@ -52,6 +53,13 @@ class Hubber {
               const localState = this.store.getState();
               return localState[key];
             },
+
+            addPlugin: (pluginName) => {
+              this.store.dispatch({
+                type: 'PLUGINS_ADD',
+                name: pluginName,
+              });
+            },
           },
         });
       },
@@ -60,27 +68,32 @@ class Hubber {
     };
 
     plugins.push(configPlugin);
-    console.error(plugins);
 
-    const basePath = path.join(__dirname, '..', '..');
+    const basePath = path.join(__dirname, '..');
     const architectConfig = architect.resolveConfig(plugins, basePath);
 
     return architectConfig;
   }
 
   startArchitect() {
+    log.debug('Creating Architect');
+
     const config = this.architectConfig();
-    architect.createApp(config, (err, app) => {
+    const arch = architect.createApp(config, (err, app) => {
       if (err) {
         // TODO: Show some error in web app
+        log.error('Could not start architect');
         log.error(err);
-        throw err;
       }
       log.info('plugins ready');
 
       if (app.services.iot) {
-        this.setupIoT(app.services);
+        Hubber.setupIoT(app.services);
       }
+    });
+
+    arch.on('plugin', (plugin) => {
+      log.debug(`Loaded plugin: ${plugin.packagePath}`);
     });
   }
 }

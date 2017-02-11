@@ -5,6 +5,11 @@ const plugins = (state = [], action) => {
         ...state,
         ...action.plugins,
       ];
+    case 'PLUGINS_ADD':
+      return [
+        ...state,
+        action.name,
+      ];
     default:
       return state;
   }
