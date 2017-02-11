@@ -12,4 +12,4 @@ const iot = (state = { }, action) => {
 
 export default iot;
 
-// export const getToken = state => state.auth;
+export const getIoT = state => state.iot;

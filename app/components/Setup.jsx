@@ -8,6 +8,7 @@ import { finalise } from '../actions/setup';
 import { setup } from '../actions/iot';
 
 import { getConnected, getAuthenticated } from '../reducers/setup';
+import { getIoT } from '../reducers/iot';
 
 const Authentication = ({ authenticated, handleAuthentication }) => {
   if (authenticated) {
@@ -43,14 +44,14 @@ const Connection = ({ connected, handleConnection }) => {
   );
 };
 
-const Finalise = ({ handleFinalisation }) => (
+const Finalise = ({ iot, handleFinalisation }) => (
   <Alert bsStyle="success">
     <p><Glyphicon glyph="info-sign" /> Your system is now configured and ready to install plugins</p>
-    <p><Button bsStyle="primary" onClick={handleFinalisation}>Finish</Button></p>
+    <p><Button bsStyle="primary" onClick={() => handleFinalisation(iot)}>Finish</Button></p>
   </Alert>
 );
 
-const Setup = ({ authenticated, connected, handleAuthentication, handleConnection, handleFinalisation }) => (
+const Setup = ({ authenticated, connected, handleAuthentication, handleConnection, handleFinalisation, iot }) => (
   <div>
     <p className="lead"> Your system is currently unconfigured and we need to link it up to EchoHub to get started, please follow the steps below</p>
 
@@ -62,7 +63,7 @@ const Setup = ({ authenticated, connected, handleAuthentication, handleConnectio
     }
 
     {authenticated && connected &&
-      <Finalise handleFinalisation={handleFinalisation} />
+      <Finalise handleFinalisation={handleFinalisation} iot={iot} />
     }
   </div>
 );
@@ -70,6 +71,7 @@ const Setup = ({ authenticated, connected, handleAuthentication, handleConnectio
 const mapStateToProps = state => ({
   authenticated: getAuthenticated(state),
   connected: getConnected(state),
+  iot: getIoT(state),
 });
 
 const mapDispatchToProps = {
