@@ -6,10 +6,13 @@ import Layout from './Layout';
 import Home from './Home';
 import Setup from './Setup';
 
-const checkConfigured = store => (nextState, replace, callback) => {
-  const configured = store.configured || false;
+import { getFinalised } from '../reducers/setup';
 
-  if (!configured) {
+const checkConfigured = store => (nextState, replace, callback) => {
+  const state = store.getState();
+  const finalised = getFinalised(state);
+
+  if (!finalised) {
     replace({ pathname: '/setup', query: { returnTo: nextState.location.pathname + nextState.location.search } });
   }
 

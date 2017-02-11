@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Alert, Glyphicon, Button } from 'react-bootstrap';
 
 import { authenticate } from '../actions/authentication';
+import { finalise } from '../actions/setup';
 import { setup } from '../actions/iot';
 
 import { getConnected, getAuthenticated } from '../reducers/setup';
@@ -42,14 +43,14 @@ const Connection = ({ connected, handleConnection }) => {
   );
 };
 
-const Finalise = () => (
+const Finalise = ({ handleFinalisation }) => (
   <Alert bsStyle="success">
     <p><Glyphicon glyph="info-sign" /> Your system is now configured and ready to install plugins</p>
-    <p><Button bsStyle="primary" onClick={() => {}}>Finish</Button></p>
+    <p><Button bsStyle="primary" onClick={handleFinalisation}>Finish</Button></p>
   </Alert>
 );
 
-const Setup = ({ authenticated, connected, handleAuthentication, handleConnection }) => (
+const Setup = ({ authenticated, connected, handleAuthentication, handleConnection, handleFinalisation }) => (
   <div>
     <p className="lead"> Your system is currently unconfigured and we need to link it up to EchoHub to get started, please follow the steps below</p>
 
@@ -61,7 +62,7 @@ const Setup = ({ authenticated, connected, handleAuthentication, handleConnectio
     }
 
     {authenticated && connected &&
-      <Finalise connected={connected} />
+      <Finalise handleFinalisation={handleFinalisation} />
     }
   </div>
 );
@@ -74,6 +75,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   handleAuthentication: authenticate,
   handleConnection: setup,
+  handleFinalisation: finalise,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Setup);
