@@ -1,11 +1,8 @@
-import electron from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { hashHistory } from 'react-router';
 import { routerMiddleware, syncHistoryWithStore } from 'react-router-redux';
-import { persistStore, autoRehydrate } from 'redux-persist';
-import { AsyncNodeStorage } from 'redux-persist-node-storage';
-import path from 'path';
+import { autoRehydrate } from 'redux-persist';
 
 import reducers from './reducers';
 
@@ -31,20 +28,6 @@ const configureStore = () => {
   );
 
   store.history = syncHistoryWithStore(hashHistory, store);
-
-  const app = electron.app || electron.remote.app;
-  const storagePath = path.join(app.getPath('userData'), 'config');
-  const asyncStorage = new AsyncNodeStorage(storagePath);
-  const persistConfig = {
-    whitelist: [
-      'auth',
-      'iot',
-      'plugins',
-      'setup',
-    ],
-    storage: asyncStorage,
-  };
-  persistStore(store, persistConfig);
 
   if (module.hot) {
     module.hot.accept('./reducers', () => {
