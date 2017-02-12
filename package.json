@@ -1,5 +1,5 @@
 {
-  "author": "John Ferlito",
+  "author": "John Ferlito <johnf@inodes.org> (http://inodes.org)",
   "bugs": {
     "url": "https://github.com/echohubio/hubber/issues"
   },
@@ -39,8 +39,11 @@
     "css-loader": "^0.26.1",
     "devtron": "^1.4.0",
     "electron": "^1.4.15",
+    "electron-builder": "^13.5.0",
     "electron-debug": "^1.1.0",
     "electron-devtools-installer": "^2.1.0",
+    "electron-inspector": "^0.1.4",
+    "electron-rebuild": "^1.5.7",
     "eslint": "^3.15.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
@@ -80,10 +83,13 @@
     "package": "npm run build && build --publish never",
     "package-win": "npm run build && build --win --x64",
     "package-linux": "npm run build && build --linux",
+    "package-mac": "npm run build && build --mac",
     "package-all": "npm run build && build -mwl",
     "just-package": "build --publish never",
     "just-package-win": "build --win --x64",
-    "just-package-linux": "build --linux"
+    "just-package-linux": "build --linux",
+    "just-package-mac": "build --mac",
+    "just-package-all": "build -mwl"
   },
   "build": {
     "TODO": "REMOVE",
@@ -107,11 +113,10 @@
       ]
     },
     "files": [
-      "dist/",
+      "app/dist/",
       "node_modules/",
-      "app.html",
-      "main.js",
-      "main.js.map",
+      "app/main.js",
+      "app/main.js.map",
       "package.json"
     ],
     "win": {
@@ -120,7 +125,8 @@
     },
     "linux": {
       "target": [
-        "dir"
+        "dir",
+        "deb"
       ]
     },
     "directories": {

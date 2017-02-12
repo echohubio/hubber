@@ -27,5 +27,10 @@ export default {
   // plugins: [],
   externals: {
     architect: 'architect',
+    'electron-devtools-installer': 'electron-devtools-installer',
+  },
+  node: {
+    __dirname: false,
+    __filename: false,
   },
 };

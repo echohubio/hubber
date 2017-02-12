@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow, Menu } from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
+import { app, shell, BrowserWindow, Menu, ipcMain } from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
 import path from 'path';
 import url from 'url';
 
@@ -34,6 +34,7 @@ const installExtensions = async () => {
   // TODO: Use async interation statement.
   //       Waiting on https://github.com/tc39/proposal-async-iteration
   //       Promises will fail silently, which isn't what we want in development
+  console.error('c');
   return Promise
     .all(extensions.map(name => installer.default(installer[name], forceDownload)))
     .catch(console.error);
@@ -309,8 +310,12 @@ const createWindow = () => {
     height: 728,
   });
 
+  const appHtml = process.env.NODE_ENV === 'production' ?
+    path.join(__dirname, 'dist', 'app.html') :
+    path.join(__dirname, 'app.html');
+
   win.loadURL(url.format({
-    pathname: path.join(__dirname, 'app.html'),
+    pathname: appHtml,
     protocol: 'file:',
     slashes: true,
   }));
@@ -318,6 +323,28 @@ const createWindow = () => {
   win.webContents.on('did-finish-load', () => {
     win.show();
     win.focus();
+  });
+
+  win.webContents.on('did-fail-load', (event, errorCode, errorDescription, validatedURL, isMainFrame) => {
+    console.error('did-fail-load');
+    console.error(event);
+    console.error(errorCode);
+    console.error(errorDescription);
+    console.error(validatedURL);
+    console.error(isMainFrame);
+  });
+
+  win.webContents.on('crashed', (event, killed) => {
+    console.error('crashed');
+    console.error(event);
+    console.error(killed);
+  });
+
+  win.webContents.on('plugin-crashed', (event, name, version) => {
+    console.error('plugin-crashed');
+    console.error(event);
+    console.error(name);
+    console.error(version);
   });
 
   win.on('closed', () => {
@@ -362,6 +389,14 @@ app.on('activate', () => {
   if (win === null) {
     createWindow();
   }
+});
+
+app.on('gpu-process-crashed', () => {
+  console.error('GPU Crash');
+});
+
+ipcMain.on('log', (event, arg) => {
+  console.error(arg);
 });
 
 // In this file you can include the rest of your app's specific main process

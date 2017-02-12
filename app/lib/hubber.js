@@ -1,7 +1,5 @@
 import path from 'path';
 import architect from 'architect';
-
-
 import log from 'electron-log';
 
 class Hubber {
