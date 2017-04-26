@@ -9,10 +9,6 @@ export default {
         loaders: ['babel-loader'],
         exclude: /node_modules/,
       },
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
-      },
     ],
   },
   output: {
