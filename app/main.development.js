@@ -1,9 +1,50 @@
 import { app, shell, BrowserWindow, Menu, ipcMain } from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
+import { autoUpdater } from 'electron-updater';
+import log from 'electron-log';
 import path from 'path';
 import url from 'url';
 
 let menu;
 let win;
+
+// TODO does this replace everything?
+const sendStatusToWindow = (text) => {
+  log.info(text);
+  win.webContents.send('message', text);
+};
+
+autoUpdater.logger = log;
+autoUpdater.logger.transports.file.level = 'info';
+
+autoUpdater.on('checking-for-update', () => {
+  sendStatusToWindow('Checking for update...');
+});
+
+autoUpdater.on('update-available', (ev, info) => {
+  sendStatusToWindow(`Update available. ${info}`);
+});
+
+autoUpdater.on('update-not-available', (ev, info) => {
+  sendStatusToWindow(`Update not available. ${info}`);
+});
+
+autoUpdater.on('error', (ev, err) => {
+  sendStatusToWindow(`Error in auto-updater. ${err}`);
+});
+
+autoUpdater.on('download-progress', (ev, progressObj) => {
+  sendStatusToWindow(`Download progress... ${progressObj}`);
+});
+
+autoUpdater.on('update-downloaded', (ev, info) => {
+  // Wait 5 seconds, then quit and install
+  // In your application, you don't need to wait 5 seconds.
+  // You could call autoUpdater.quitAndInstall(); immediately
+  sendStatusToWindow(`Update downloaded; will install in 5 seconds ${info}`);
+  setTimeout(() => {
+    autoUpdater.quitAndInstall();
+  }, 5000);
+});
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support'); // eslint-disable-line global-require,
@@ -371,6 +412,7 @@ const createWindow = () => {
 app.on('ready', async () => {
   await installExtensions();
 
+  autoUpdater.checkForUpdates();
   createWindow();
 });
 
