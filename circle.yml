@@ -6,7 +6,7 @@ dependencies:
     - ~/.cache/yarn
 test:
   override:
-    - yarn test
+    - yarn run dist
 machine:
   environment:
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
