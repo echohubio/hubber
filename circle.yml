@@ -1,8 +1,8 @@
 version: 1
 dependencies:
   cache_directories:
-    - $HOME/.electron
-    - $HOME/.cache
+    - ~/.electron
+    - ~/.cache
   pre:
     - sudo apt-get update;
     - sudo apt-get install --no-install-recommends -y icnsutils graphicsmagick xz-utils rpm
