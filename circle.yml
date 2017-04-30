@@ -1,6 +1,7 @@
 version: 1
 dependencies:
   cache_directories:
+    # Note this doesn't work as cache happens before test stage
     - ~/.electron
     - ~/.cache
   pre:
