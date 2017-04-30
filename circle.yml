@@ -1,5 +1,8 @@
 version: 1
 dependencies:
+  pre:
+    - sudo apt-get update;
+    - sudo apt-get install --no-install-recommends -y icnsutils graphicsmagick xz-utils rpm
   override:
     - yarn
   cache_directories:
