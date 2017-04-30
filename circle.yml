@@ -1,5 +1,8 @@
 version: 1
 dependencies:
+  cache_directories:
+    - $HOME/.electron
+    - $HOME/.cache
   pre:
     - sudo apt-get update;
     - sudo apt-get install --no-install-recommends -y icnsutils graphicsmagick xz-utils rpm
@@ -9,6 +12,7 @@ dependencies:
     - ~/.cache/yarn
 test:
   override:
+    - yarn run build
     - yarn run dist
 machine:
   environment:
