@@ -13,6 +13,7 @@ matrix:
       compiler: clang
 
 cache:
+  yarn: true
   directories:
   - node_modules
   - $HOME/.electron
@@ -28,6 +29,10 @@ addons:
       # - libgnome-keyring-dev
       # - libsecret-1-dev
 
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
+
 install:
   - yarn install
 # - nvm install 7
@@ -36,14 +41,6 @@ install:
 script:
   - yarn run build
   - yarn run dist
-
-cache:
-  yarn: true
-  # directories:
-  #   - node_modules
-  # - ~/.electron
-  #   - ~/.cache
-
 
 # branches:
 #   except:
