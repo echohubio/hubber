@@ -1,47 +1,35 @@
 osx_image: xcode7.3
-
 dist: trusty
 sudo: false
-
 language: c
-
 matrix:
   include:
-    - os: osx
-    - os: linux
-      env: CC=clang CXX=clang++ npm_config_clang=1
-      compiler: clang
-
+  - os: osx
+  - os: linux
+    env: CC=clang CXX=clang++ npm_config_clang=1
+    compiler: clang
 cache:
   yarn: true
   directories:
   - node_modules
-  - $HOME/.electron
-  - $HOME/.cache
-
+  - "$HOME/.electron"
+  - "$HOME/.cache"
 addons:
   apt:
     packages:
-      - icnsutils
-      - graphicsmagick
-      - xz-utils
-      - rpm
-      # - libgnome-keyring-dev
-      # - libsecret-1-dev
-
+    - icnsutils
+    - graphicsmagick
+    - xz-utils
+    - rpm
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - export PATH=$HOME/.yarn/bin:$PATH
-
+- curl -o- -L https://yarnpkg.com/install.sh | bash
+- export PATH=$HOME/.yarn/bin:$PATH
 install:
-  - yarn install
-# - nvm install 7
-# - yarn add electron-builder@next --dev # force install next version to test electron-builder
-
+- yarn install
 script:
-  - yarn run build
-  - yarn run dist
-
-# branches:
-#   except:
-#     - "/^v\\d+\\.\\d+\\.\\d+$/"
+- yarn run build
+- yarn run dist
+env:
+  matrix:
+  - secure: M/l/3zN9HWpgnljmWfODFsW9ANwmvbXHCytoijwrN6Tk3DtHZyDVITDkr3UFfltyFDTv7rkhqDU62NMFOP2nlIZoehvFN8Qp0EZgjFxotzE4H5SbDHvU0QG8B9dGope1oHRwY+eJWZyqpRyY5hxWla/5PNczG+7F67FFB2a4tp3XBumXKQDZnEh/YL02QY2Zgsfyd2qDEF4sYshqT4kfwfh+dTXeyJJF7dbYRMc2YkTIgZQR15b9SEo3c3iZKOeS999Q6ymDTr/6txLsgEBOyMF2HvCRveEA3o6Bq+JQQMXSHSpyhBIynaTGEGINnP9Ds74/AQsJYX0PO0PU4XAWW7WPUuN51uJhpvVWHaOUM9D9x/THk+RinonCYldpE/15ithWNL0LhoQ9Z3HxDSw4TaQ6EbiY5uPvvAg31wbQcnl1eHDagfqmpWtvOf61S5oX5FWNBeBV/KJ4HFXhu2nxrq/qvHjIOtn0jjzbQoEBCRTjS/7gW2nxT2vkfBrTSa1pOas4LbWQDZrfWAOHj3TEWiOyyKJkRRTAUD6M8B+FkOnNsrQ8meyoBJxdnN8o8E+nE14OhCoq/UCwa7uO5E/FKMsb/jpCAzEt00yTtj5n6r4fswtTgTpwsK/y0oCvNnkz6zDP0qH1l+vJDc/aoo5dc+G8HBWxB/r1JAcCSIos0rs=
+  - secure: MjePc/3QwValg6UplkIHNv1NVk+MUKtCY34UaF+Y1V9vQJ8mUgjvUOjmwk3JCx6bKLktk1dL1gWHr+hERrZCOX+nl0g8e5UTeDmMn4EsS/ZaPzQwmzxbz1XbkDKb5X3BZWQLqjzhxWNmKmEogys3znysKYFN70OPMR8qku5d3DZ0ntpqAPSfxjk4iG1F2UZTg6DcaBReJbPliMK8PEFaaMfSK41vWDXl5tVVIuL/jEliFrgtpKF6aZNuJVxoAb5XJohxBfJIfWGn447IQGsdhO4mxJBqfshbMiZqa/eM8Fpk5oJQHRZ8OEUzH7UK2/wG5UskGWgCrIa97YePbb+J3tjaIKbNWemgvRgwxGmD/qd8RjbF3sdFhIg9V9Zn3Hd6jQwIPrVvNCo8tN6eVVffzwBiwXbnXrD/rZIEA5zCZXshfitVr6MV2LFFZ9hHh0Alzy5WttSr30xHt7EXFvdDqG0PjYjEoh5POehGZzhSYtU3avvxOlyishWuo8qaIwfhssiZW/sgy1VUMErLuyqrFd9kfNjr1Plc85/NfrP9d0rkE3fdqQYkl67Yz4oITuQI08zD+X+Ac3Hi56R0Uw8HEMKtZkGp0qVn+CzXfSn9X+MBJqGuq1ITM1eagUgEFLMgrt7l5aXg6k/CwgVzmMrRAvtujtVFybZ7aOxDTSP2gvQ=
