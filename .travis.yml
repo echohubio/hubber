@@ -1,19 +1,23 @@
 osx_image: xcode7.3
 dist: trusty
+
 sudo: false
 language: c
+
 matrix:
   include:
   - os: osx
   - os: linux
     env: CC=clang CXX=clang++ npm_config_clang=1
     compiler: clang
+
 cache:
   yarn: true
   directories:
   - node_modules
   - "$HOME/.electron"
   - "$HOME/.cache"
+
 addons:
   apt:
     packages:
@@ -21,15 +25,20 @@ addons:
     - graphicsmagick
     - xz-utils
     - rpm
+
 before_install:
 - curl -o- -L https://yarnpkg.com/install.sh | bash
 - export PATH=$HOME/.yarn/bin:$PATH
+
 install:
 - yarn install
+
 script:
 - yarn run build
 - yarn run dist
+
 env:
-  matrix:
-  - secure: M/l/3zN9HWpgnljmWfODFsW9ANwmvbXHCytoijwrN6Tk3DtHZyDVITDkr3UFfltyFDTv7rkhqDU62NMFOP2nlIZoehvFN8Qp0EZgjFxotzE4H5SbDHvU0QG8B9dGope1oHRwY+eJWZyqpRyY5hxWla/5PNczG+7F67FFB2a4tp3XBumXKQDZnEh/YL02QY2Zgsfyd2qDEF4sYshqT4kfwfh+dTXeyJJF7dbYRMc2YkTIgZQR15b9SEo3c3iZKOeS999Q6ymDTr/6txLsgEBOyMF2HvCRveEA3o6Bq+JQQMXSHSpyhBIynaTGEGINnP9Ds74/AQsJYX0PO0PU4XAWW7WPUuN51uJhpvVWHaOUM9D9x/THk+RinonCYldpE/15ithWNL0LhoQ9Z3HxDSw4TaQ6EbiY5uPvvAg31wbQcnl1eHDagfqmpWtvOf61S5oX5FWNBeBV/KJ4HFXhu2nxrq/qvHjIOtn0jjzbQoEBCRTjS/7gW2nxT2vkfBrTSa1pOas4LbWQDZrfWAOHj3TEWiOyyKJkRRTAUD6M8B+FkOnNsrQ8meyoBJxdnN8o8E+nE14OhCoq/UCwa7uO5E/FKMsb/jpCAzEt00yTtj5n6r4fswtTgTpwsK/y0oCvNnkz6zDP0qH1l+vJDc/aoo5dc+G8HBWxB/r1JAcCSIos0rs=
-  - secure: MjePc/3QwValg6UplkIHNv1NVk+MUKtCY34UaF+Y1V9vQJ8mUgjvUOjmwk3JCx6bKLktk1dL1gWHr+hERrZCOX+nl0g8e5UTeDmMn4EsS/ZaPzQwmzxbz1XbkDKb5X3BZWQLqjzhxWNmKmEogys3znysKYFN70OPMR8qku5d3DZ0ntpqAPSfxjk4iG1F2UZTg6DcaBReJbPliMK8PEFaaMfSK41vWDXl5tVVIuL/jEliFrgtpKF6aZNuJVxoAb5XJohxBfJIfWGn447IQGsdhO4mxJBqfshbMiZqa/eM8Fpk5oJQHRZ8OEUzH7UK2/wG5UskGWgCrIa97YePbb+J3tjaIKbNWemgvRgwxGmD/qd8RjbF3sdFhIg9V9Zn3Hd6jQwIPrVvNCo8tN6eVVffzwBiwXbnXrD/rZIEA5zCZXshfitVr6MV2LFFZ9hHh0Alzy5WttSr30xHt7EXFvdDqG0PjYjEoh5POehGZzhSYtU3avvxOlyishWuo8qaIwfhssiZW/sgy1VUMErLuyqrFd9kfNjr1Plc85/NfrP9d0rkE3fdqQYkl67Yz4oITuQI08zD+X+Ac3Hi56R0Uw8HEMKtZkGp0qVn+CzXfSn9X+MBJqGuq1ITM1eagUgEFLMgrt7l5aXg6k/CwgVzmMrRAvtujtVFybZ7aOxDTSP2gvQ=
+  # AWS Keys
+  global:
+  - secure: XXfn+vJya5RDmKkJ021Om2025BEaAC68+aHqqCX0kDjrrUMONPM3BgH+OUBgN+vWC+Oz2AWAGEC/bhWrsOj5YM7odGzHLVqeBvM3WSksCsnQBqzxTJsVxmR86Fw1tSQ8hXKr2MaKThzXDeeiXvOIuEPw9szVqVR43Hkf0g2E+6Wim6yIVgTLnVB8tYXFxoOT/JDRTe2+K6hYJ8BNlFP2nTU05e57btXNq5S1m5VMtFTGAjhoPuHLcPFjjYkWX9oP+EQpolM/IsgzaAei8pmfCjTwA4HDQR7CO07d/CUbqcgGdJcJx/k6JJtI+yQkSn72U/y1D0jPUGT+DyHGD12g7kpxcWQ2xrMdJqcrHENoLFh4ffBZj7mQjPAZgkD4HE7b/1RRheHCS9u5mQVMlQTCSn7WmjHXH/VMM+4gi+qqMIsv1QrdQwS8ZEDwO+MoEYWTtPhwlcpNd9IY1JrEUh0B6Tmnp/Jex9pQ8OpQS/TdaSFQltn0k9RPl8TgtReeM6ALQkeRS30owmDgCbLJY0iUFhqksfogS4SQyfpyZhryy3mNEee6HhOt1VgqMbfJOQoUKGPH1n+efY9MGtisjs55PztD7MWP+BJAAwWHuizpM3WNzvee6q25GEXgUpcz8l+cWmmJMiEaNzGQdJaFQ7qwuW3MtzgqVuB3UDsvzgkAaxc=
+  - secure: rGFYxlgQ53cXHGciQbrR0bsCI85Hxdc75IhYZDqN/oiXy2wKYQoIU6WxNjzfuqliogV2o4Kb0Pg1cmrRAU79UKv//FjdgZh7e/jZcAOsqyAU69TwicSpUxbuWzIjG01TlLZflp+hUCT/aX0EC8WdE09+W7H225BgYPB2NZCi4BsmW5ie2hWUFKS3iFyeheQF7DymGdfBbfIU1h+0Yeb87bCtgi7yYVyQMkZ/7UP/zEBZq5MU0JekOXs22tpsWechUKiVik472bYReEdVL0hvCJG01FTQhnM56abtIGuA0sQEmOdXiUzbsmEXyRDHpUhdJZBJ+ReLrgZT/bmLbZrMR+21yTfXULkD48ARlVWQ25KckLXAjnIQmM71F3D1Svg4Oc8OjlSn5KeDNylJyHyU/8dmb+wBdZG5DsNcOnEIE887f+Qr4yjtQBbkoUXxQGL15RMiWPw+jhFykyIF3Bm3GMjmwXhKcC4NlKGR8yJJisxAsLBdtEIfwK9Ccbd3utQP2QChJnSjQlJyFvuph5wcJqxc6B7mOMdchDlL6b97cqHE0Awr+yIJ++uLq++PDJiaKAjpPwYVUOpPKHOifxI6h+/7nOGg/k4xJ8lOrlfqa+v1tU2Da7cTkEyHUj5H6gVFZYFTjoHTDuZBXJ7CRXfewMMA9OrtokIMUvg9oDwPVYc=
