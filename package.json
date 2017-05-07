@@ -106,12 +106,12 @@
     "build-main": "cross-env NODE_ENV=production webpack --config config/webpack.config.electron.babel.js --progress --profile --colors",
     "build-renderer": "cross-env NODE_ENV=production webpack --config config/webpack.config.production.babel.js --progress --profile --colors",
     "dev": "yarn run hot-server -- --start-hot",
-    "docker": "docker run --rm -ti -v ${PWD}:/project -v ${PWD##*/}-node-modules:/project/node_modules -v ~/.electron:/root/.electron electronuserland/electron-builder:wine",
+    "start-hot": "cross-env HOT=1 NODE_ENV=development electron -r babel-register -r babel-polyfill ./app/main.development",
     "hot-server": "cross-env NODE_ENV=development node --max_old_space_size=2096 -r babel-register server.js",
     "lint": "eslint .",
-    "pack": "build --dir",
-    "dist": "build",
-    "start-hot": "cross-env HOT=1 NODE_ENV=development electron -r babel-register -r babel-polyfill ./app/main.development"
+    "pack": "yarn build && build --dir",
+    "dist": "yarn build && build --publish onTagOrDraft",
+    "release": "yarn build && build"
   },
   "version": "0.0.1"
 }

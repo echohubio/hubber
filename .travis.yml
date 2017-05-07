@@ -1,7 +1,8 @@
 osx_image: xcode7.3
-dist: trusty
 
+dist: trusty
 sudo: false
+
 language: c
 
 matrix:
@@ -15,8 +16,8 @@ cache:
   yarn: true
   directories:
   - node_modules
-  - "$HOME/.electron"
-  - "$HOME/.cache"
+  - $HOME/.electron
+  - $HOME/.cache
 
 addons:
   apt:
@@ -34,5 +35,4 @@ install:
 - yarn install
 
 script:
-- yarn run build
-- yarn run dist
+- yarn run release
