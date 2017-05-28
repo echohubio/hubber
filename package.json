@@ -24,11 +24,16 @@
     "nsis": {
       "license": "LICENSE"
     },
-    "publish": {
-      "bucket": "packages.echohub.io",
-      "path": "${os}",
-      "provider": ["github", "s3"]
-    },
+    "publish": [
+      {
+        "bucket": "packages.echohub.io",
+        "path": "${os}",
+        "provider": "s3"
+      },
+      {
+        "provider": "github"
+      }
+    ],
     "win": {
       "target": [
         "nsis"
