@@ -31,6 +31,7 @@ addons:
 before_install:
 - curl -o- -L https://yarnpkg.com/install.sh | bash
 - export PATH=$HOME/.yarn/bin:$PATH
+- if [ ! -z "$GPG_SECRET_KEYS" ]; then echo $GPG_SECRET_KEYS | base64 --decode | gpg --import; fi
 
 install:
 - yarn install
@@ -39,7 +40,7 @@ script:
 - yarn run dist
 
 after_script:
-- if [ "$TRAVIS_OS_NAME" == "linux" -a -s "$TRAVIS_TAG" ]; then
+- if [ "$TRAVIS_OS_NAME" == "linux" -a -n "$TRAVIS_TAG" ]; then
     bundle
-    deb-s3 upload --bucket=$ECHOHUB_BUCKET --prefix=debian --codename=ubuntu --no-quiet dist/*deb
+    deb-s3 upload --bucket=$ECHOHUB_BUCKET --prefix=debian --codename=ubuntu dist/*deb
   fi
