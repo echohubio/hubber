@@ -35,4 +35,4 @@ install:
 - yarn install
 
 script:
-- yarn run release
+- yarn run dist
