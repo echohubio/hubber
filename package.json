@@ -27,7 +27,7 @@
     "publish": {
       "bucket": "packages.echohub.io",
       "path": "${os}",
-      "provider": "s3"
+      "provider": ["github", "s3"]
     },
     "win": {
       "target": [
