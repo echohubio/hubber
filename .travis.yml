@@ -14,11 +14,11 @@ matrix:
 
 cache:
   yarn: true
+  bundler: true
   directories:
   - node_modules
   - $HOME/.electron
   - $HOME/.cache
-  - $HOME/.bundle
 
 addons:
   apt:
