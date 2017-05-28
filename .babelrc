@@ -1,4 +1,11 @@
 {
-  "presets": ["latest", "react-app"],
-  "plugins": ["react-hot-loader/babel", "add-module-exports", "transform-object-rest-spread"]
+  "presets": [
+    "latest",
+    "react-app"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "add-module-exports",
+    "transform-object-rest-spread"
+  ]
 }
