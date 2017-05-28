@@ -18,6 +18,7 @@ cache:
   - node_modules
   - $HOME/.electron
   - $HOME/.cache
+  - $HOME/.bundle
 
 addons:
   apt:
@@ -36,3 +37,9 @@ install:
 
 script:
 - yarn run dist
+
+deploy:
+- if [ "$TRAVIS_OS_NAME" == "linux" -a -s "$TRAVIS_TAG" ]; then
+    bundle
+    deb-s3 upload --bucket=$ECHOHUB_BUCKET --prefix=debian --codename=ubuntu --no-quiet dist/*deb
+  fi
