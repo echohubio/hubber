@@ -7,6 +7,8 @@ import url from 'url';
 let menu;
 let win;
 
+log.transports.console.level = 'debug';
+
 // TODO does this replace everything?
 const sendStatusToWindow = (text) => {
   log.info(text);
