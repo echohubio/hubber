@@ -18,10 +18,6 @@ const sendStatusToWindow = (text) => {
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = 'info';
 
-autoUpdater.on('checking-for-update', () => {
-  sendStatusToWindow('Checking for update...');
-});
-
 autoUpdater.on('update-available', (ev, info) => {
   sendStatusToWindow(`Update available. ${info}`);
 });

@@ -6,7 +6,6 @@
   "build": {
     "appId": "io.echohub.hubber",
     "copyright": "Copyright © 2017 EchoHub",
-    "forceCodeSigning": true,
     "linux": {
       "target": [
         "dir",
@@ -15,20 +14,20 @@
       ]
     },
     "mac": {
-      "category": "public.app-category.productivity",
-      "target": [
-        "dmg",
-        "zip"
-      ]
+      "category": "public.app-category.productivity"
     },
     "nsis": {
       "license": "LICENSE"
     },
     "publish": [
       {
+        "provider": "generic",
+        "url": "https://packages.echohub.io/${os}"
+      },
+      {
+        "provider": "s3",
         "bucket": "packages.echohub.io",
-        "path": "${os}",
-        "provider": "s3"
+        "path": "${os}"
       },
       {
         "provider": "github"

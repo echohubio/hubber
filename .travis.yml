@@ -31,7 +31,9 @@ addons:
 before_install:
 - curl -o- -L https://yarnpkg.com/install.sh | bash
 - export PATH=$HOME/.yarn/bin:$PATH
-- if [ ! -z "$GPG_SECRET_KEYS" ]; then echo $GPG_SECRET_KEYS | base64 --decode | gpg --import; fi
+- if [ "$TRAVIS_OS_NAME" == "linux" -a -n "$GPG_SECRET_KEYS" ]; then
+    echo $GPG_SECRET_KEYS | base64 --decode | gpg --import
+  fi
 
 install:
 - yarn install
