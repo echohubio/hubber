@@ -49,6 +49,10 @@ before_install:
   esac;
 -  sed -i.bak "s/ECHOHUB_BUCKET/$(cat bucket)/" package.json
 -  sed -i.bak "s/ECHOHUB_DOMAIN/$(cat domain)/" package.json
+- ls
+- cat bucket
+- cat domain
+- cat package.json
 
 install:
 - yarn install
