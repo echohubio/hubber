@@ -47,8 +47,8 @@ before_install:
       echo packages.staging.echohub.io > domain
       ;;
   esac;
--  sed -i "s/ECHOHUB_BUCKET/$(cat bucket)/" package.json
--  sed -i "s/ECHOHUB_DOMAIN/$(cat domain)/" package.json
+-  sed -i.bak "s/ECHOHUB_BUCKET/$(cat bucket)/" package.json
+-  sed -i.bak "s/ECHOHUB_DOMAIN/$(cat domain)/" package.json
 
 install:
 - yarn install
