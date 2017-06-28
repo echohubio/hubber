@@ -22,11 +22,11 @@
     "publish": [
       {
         "provider": "generic",
-        "url": "https://packages.echohub.io/${os}"
+        "url": "https://ECHOHUB_DOMAIN/${os}"
       },
       {
         "provider": "s3",
-        "bucket": "packages.echohub.io",
+        "bucket": "ECHOHUB_BUCKET",
         "path": "${os}"
       },
       {
@@ -118,5 +118,5 @@
     "dist": "yarn run build && build",
     "release": "package"
   },
-  "version": "0.0.4"
+  "version": "0.0.5"
 }
