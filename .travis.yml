@@ -20,6 +20,9 @@ cache:
   - $HOME/.electron
   - $HOME/.cache
 
+before_addons:
+- apt-get -o Debug::pkgAcquire::Auth=true update
+
 addons:
   apt:
     packages:
