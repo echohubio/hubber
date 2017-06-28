@@ -39,12 +39,12 @@ before_install:
   fi;
 - case $TRAVIS_BRANCH in
     "production")
-      echo -n echohub-packages-production > bucket
-      echo -n packages.echohub.io > domain
+      echo -n echohub-packages-production > bucket;
+      echo -n packages.echohub.io > domain;
       ;;
     *)
-      echo -n echohub-packages-staging > bucket
-      echo -n packages.staging.echohub.io > domain
+      echo -n echohub-packages-staging > bucket;
+      echo -n packages.staging.echohub.io > domain;
       ;;
   esac;
 - sed -i.bak "s/ECHOHUB_BUCKET/$(cat bucket)/" package.json
