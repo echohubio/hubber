@@ -13,13 +13,13 @@ matrix:
       compiler: clang
 
 cache:
+  ccache: true
   yarn: true
   bundler: true
   directories:
     - node_modules
     - $HOME/.electron
     - $HOME/.cache
-    - $HOME/Library/Caches/Homebrew
 
 addons:
   apt:
@@ -31,7 +31,7 @@ addons:
 
 before_install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
-       brew install wine --without-x11;
+       brew cask install wine-stable;
     fi
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH=$HOME/.yarn/bin:$PATH
