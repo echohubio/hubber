@@ -7,57 +7,58 @@ language: c
 
 matrix:
   include:
-  - os: osx
-  - os: linux
-    env: CC=clang CXX=clang++ npm_config_clang=1
-    compiler: clang
+    - os: osx
+    - os: linux
+      env: CC=clang CXX=clang++ npm_config_clang=1
+      compiler: clang
 
 cache:
   yarn: true
   bundler: true
   directories:
-  - node_modules
-  - $HOME/.electron
-  - $HOME/.cache
+    - node_modules
+    - $HOME/.electron
+    - $HOME/.cache
+    - $HOME/Library/Caches/Homebrew
 
 addons:
   apt:
     packages:
-    - icnsutils
-    - graphicsmagick
-    - xz-utils
-    - rpm
+      - icnsutils
+      - graphicsmagick
+      - xz-utils
+      - rpm
 
 before_install:
-- if [ "$TRAVIS_OS_NAME" == "osx" ]; then
-     brew install wine --without-x11;
-  fi
-- curl -o- -L https://yarnpkg.com/install.sh | bash
-- export PATH=$HOME/.yarn/bin:$PATH
-- if [ "$TRAVIS_OS_NAME" == "linux" -a -n "$GPG_SECRET_KEYS" ]; then
-    echo $GPG_SECRET_KEYS | base64 --decode | gpg --import;
-  fi;
-- case $TRAVIS_BRANCH in
-    "production")
-      echo -n echohub-packages-production > bucket;
-      echo -n packages.echohub.io > domain;
-      ;;
-    *)
-      echo -n echohub-packages-staging > bucket;
-      echo -n packages.staging.echohub.io > domain;
-      ;;
-  esac;
-- sed -i.bak "s/ECHOHUB_BUCKET/$(cat bucket)/" package.json
-- sed -i.bak "s/ECHOHUB_DOMAIN/$(cat domain)/" package.json
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+       brew install wine --without-x11;
+    fi
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
+  - if [ "$TRAVIS_OS_NAME" == "linux" -a -n "$GPG_SECRET_KEYS" ]; then
+      echo $GPG_SECRET_KEYS | base64 --decode | gpg --import;
+    fi;
+  - case $TRAVIS_BRANCH in
+      "production")
+        echo -n echohub-packages-production > bucket;
+        echo -n packages.echohub.io > domain;
+        ;;
+      *)
+        echo -n echohub-packages-staging > bucket;
+        echo -n packages.staging.echohub.io > domain;
+        ;;
+    esac;
+  - sed -i.bak "s/ECHOHUB_BUCKET/$(cat bucket)/" package.json
+  - sed -i.bak "s/ECHOHUB_DOMAIN/$(cat domain)/" package.json
 
 install:
-- yarn install
+  - yarn install
 
 script:
-- yarn run dist
+  - yarn run dist
 
 after_script:
-- if [ "$TRAVIS_OS_NAME" == "linux" -a -n "$TRAVIS_TAG" ]; then
-    bundle;
-    echo $GPG_PASSPHRASE | deb-s3 upload --bucket=$(cat bucket) --prefix=debian --codename=ubuntu --sign=$DEBSIGN_ID --gpg-options='--passphrase-fd 0' dist/*deb;
-  fi;
+  - if [ "$TRAVIS_OS_NAME" == "linux" -a -n "$TRAVIS_TAG" ]; then
+      bundle;
+      echo $GPG_PASSPHRASE | deb-s3 upload --bucket=$(cat bucket) --prefix=debian --codename=ubuntu --sign=$DEBSIGN_ID --gpg-options='--passphrase-fd 0' dist/*deb;
+    fi;
