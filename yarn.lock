@@ -1973,9 +1973,9 @@ electron-builder-util@~19.11.0:
     stat-mode "^0.2.2"
     tunnel-agent "^0.6.0"
 
-electron-builder@^19.8.0:
-  version "19.8.0"
-  resolved "https://registry.yarnpkg.com/electron-builder/-/electron-builder-19.8.0.tgz#32f0a008be809e1df021ca13a8d9e92f6ee5c917"
+electron-builder@19.10.0:
+  version "19.10.0"
+  resolved "https://registry.yarnpkg.com/electron-builder/-/electron-builder-19.10.0.tgz#6c03987bae06c85fe88083a73b8c8142f1a3fb14"
   dependencies:
     "7zip-bin" "^2.1.0"
     ajv "^5.2.0"
@@ -2145,7 +2145,7 @@ electron-updater@^2.4.3:
     uuid-1345 "^0.99.6"
     xelement "^1.0.16"
 
-electron@^1.6.11:
+electron@1.6.11:
   version "1.6.11"
   resolved "https://registry.yarnpkg.com/electron/-/electron-1.6.11.tgz#be79c0ebdcefedb5bf28117409800fa53baceffa"
   dependencies:
