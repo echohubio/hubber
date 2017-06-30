@@ -20,9 +20,6 @@ cache:
   - $HOME/.electron
   - $HOME/.cache
 
-before_addons:
-- apt-get -o Debug::pkgAcquire::Auth=true update
-
 addons:
   apt:
     packages:
@@ -32,6 +29,7 @@ addons:
     - rpm
 
 before_install:
+- brew install wine --without-x11
 - curl -o- -L https://yarnpkg.com/install.sh | bash
 - export PATH=$HOME/.yarn/bin:$PATH
 - if [ "$TRAVIS_OS_NAME" == "linux" -a -n "$GPG_SECRET_KEYS" ]; then
