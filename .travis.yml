@@ -19,7 +19,6 @@ cache:
     - node_modules
     - $HOME/.electron
     - $HOME/.cache
-    - $HOME/Library/Caches/Homebrew
 
 addons:
   apt:
