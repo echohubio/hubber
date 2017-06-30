@@ -114,7 +114,7 @@
     "hot-server": "NODE_ENV=development node --max_old_space_size=2096 -r babel-register server.js",
     "lint": "eslint .",
     "pack": "yarn run build && build --dir",
-    "dist-osx": "yarn run build && buildi -mw",
+    "dist-osx": "yarn run build && build -mw",
     "dist-linux": "yarn run build && build -l",
     "release": "package"
   },
