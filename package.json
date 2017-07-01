@@ -73,7 +73,7 @@
     "babel-preset-react-app": "^3.0.1",
     "css-loader": "^0.28.4",
     "electron": "^1.6.11",
-    "electron-builder": "^19.11.1",
+    "@johnf/electron-builder": "^19.11.1",
     "electron-debug": "^1.1.0",
     "electron-devtools-installer": "^2.1.0",
     "electron-publisher-s3": "^19.11.0",
