@@ -58,9 +58,9 @@
     stat-mode "^0.2.2"
     tunnel-agent "^0.6.0"
 
-"@johnf/electron-builder@^0.0.7-semantic-release":
-  version "0.0.7-semantic-release"
-  resolved "https://registry.yarnpkg.com/@johnf/electron-builder/-/electron-builder-0.0.7-semantic-release.tgz#52c6ab91ce66a811c9c5319be1fd72429b39c8f1"
+"@johnf/electron-builder@^0.0.8-semantic-release":
+  version "0.0.8-semantic-release"
+  resolved "https://registry.yarnpkg.com/@johnf/electron-builder/-/electron-builder-0.0.8-semantic-release.tgz#3f3e59e6c9ac6ec3d170a0586da45d4205769049"
   dependencies:
     "7zip-bin" "^2.1.0"
     "@johnf/asar-integrity" "^0.0.6-semantic-release"
