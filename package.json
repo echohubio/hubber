@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "architect": "^0.1.13",
+    "asar-integrity": "^0.1.1",
     "babel-cli": "^6.4.0",
     "bootstrap": "^3.3.7",
     "electron-log": "^2.2.6",
