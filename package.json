@@ -119,5 +119,5 @@
     "dist-linux": "yarn run build && build -l",
     "release": "package"
   },
-  "version": "0.0.1"
+  "version": "0.0.2"
 }
