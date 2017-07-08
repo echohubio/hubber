@@ -19,6 +19,7 @@ cache:
     - node_modules
     - $HOME/.electron
     - $HOME/.cache
+    - vendor/bundle
 
 addons:
   apt:
@@ -49,6 +50,9 @@ before_install:
 
 install:
   - yarn install
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+      bundle --deployment;
+    fi;
 
 script:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
@@ -59,6 +63,5 @@ script:
 
 after_script:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      bundle;
       echo $GPG_PASSPHRASE | deb-s3 upload --bucket=$(cat bucket) --prefix=debian --codename=ubuntu --sign=$DEBSIGN_ID --gpg-options='--passphrase-fd 0' dist/*deb;
     fi;
