@@ -11,9 +11,7 @@ const configureStore = () => {
   const middlewares = [thunk, router];
 
   if (process.env.NODE_ENV !== 'production') {
-    const createLogger = require('redux-logger'); // eslint-disable-line global-require, import/no-extraneous-dependencies
-
-    const logger = createLogger();
+    const { logger } = require('redux-logger'); // eslint-disable-line global-require, import/no-extraneous-dependencies
     middlewares.push(logger);
   }
 

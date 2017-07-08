@@ -9,7 +9,7 @@ export const setup = () => (dispatch, getState) => {
   const session = getAccessToken(state);
   console.error(session);
 
-  phetch.post('https://www.echohub.io/api/iot/thing')
+  phetch.post('https://api.echohub.io/iot/thing')
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json')
     .set('Authorization', session)

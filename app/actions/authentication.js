@@ -1,10 +1,10 @@
 import electronOauth2 from 'electron-oauth2';
 
 const config = {
-  clientId: 'hubber',
-  clientSecret: '15a3ba899397432aace0f776499c6a2f',
+  clientId: 'io.echohub.hubber',
+  clientSecret: 'd659c658-0b48-4836-a793-a2f9a6fd71d4',
   authorizationUrl: 'https://www.echohub.io/alexa/link',
-  tokenUrl: 'https://www.echohub.io/api/oauth2/token',
+  tokenUrl: 'https://api.echohub.io/oauth2/token',
 };
 
 export const authenticate = () => (dispatch) => {
