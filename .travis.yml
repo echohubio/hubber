@@ -58,7 +58,7 @@ script:
     fi
 
 after_script:
-  - if [ "$TRAVIS_OS_NAME" == "linux" -a -n "$TRAVIS_TAG" ]; then
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
       bundle;
       echo $GPG_PASSPHRASE | deb-s3 upload --bucket=$(cat bucket) --prefix=debian --codename=ubuntu --sign=$DEBSIGN_ID --gpg-options='--passphrase-fd 0' dist/*deb;
     fi;
