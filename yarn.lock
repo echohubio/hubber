@@ -2121,9 +2121,9 @@ electron-log@^2.2.7:
   version "2.2.7"
   resolved "https://registry.yarnpkg.com/electron-log/-/electron-log-2.2.7.tgz#8da0d2586b53b175392ae6b91dc510a67c195341"
 
-electron-oauth2@johnf/electron-oauth2:
-  version "2.4.1"
-  resolved "https://codeload.github.com/johnf/electron-oauth2/tar.gz/11eae1e63e052a73f14d7bb43c1a8f0cf9dc2f43"
+electron-oauth2@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/electron-oauth2/-/electron-oauth2-3.0.0.tgz#d7e8ba354776097fc18d7dbcbdfaedfa3f377e7b"
   dependencies:
     node-fetch "^1.3.3"
     object-assign "^4.0.1"

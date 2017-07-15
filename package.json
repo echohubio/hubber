@@ -45,7 +45,7 @@
     "babel-cli": "^6.4.0",
     "bootstrap": "^3.3.7",
     "electron-log": "^2.2.7",
-    "electron-oauth2": "johnf/electron-oauth2",
+    "electron-oauth2": "^3.0.0",
     "electron-updater": "^2.4.4",
     "hubber-iot": "^1.0.1",
     "hubber-plugins": "^1.0.2",
