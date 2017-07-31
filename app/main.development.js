@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow, Menu, ipcMain } from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
+import { app, shell, BrowserWindow, Menu, ipcMain, Tray } from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import path from 'path';
@@ -6,6 +6,7 @@ import url from 'url';
 
 let menu;
 let win;
+let tray;
 
 log.transports.console.level = 'debug';
 
@@ -320,11 +321,60 @@ const createWindow = () => {
   createMenus();
 };
 
+const getWindowPosition = () => {
+  const windowBounds = win.getBounds();
+  const trayBounds = tray.getBounds();
+
+  // Center window horizontally below the tray icon
+  const x = Math.round(trayBounds.x + (trayBounds.width / 2) - (windowBounds.width / 2)); // eslint-disable-line no-mixed-operators
+
+  // Position window 4 pixels vertically below the tray icon
+  const y = Math.round(trayBounds.y + trayBounds.height + 4);
+
+  return { x, y };
+};
+
+const showWindow = () => {
+  const position = getWindowPosition();
+  win.setPosition(position.x, position.y, false);
+  win.show();
+  win.focus();
+};
+
+const toggleWindow = () => {
+  if (win.isVisible()) {
+    win.hide();
+  } else {
+    showWindow();
+  }
+};
+
+
+const createTray = () => {
+  tray = new Tray('build/icon.png');
+
+  // const menuTemplate = [
+  //   { label: 'Item1', type: 'radio' },
+  //   { label: 'Item2', type: 'radio' },
+  //   { label: 'Item3', type: 'radio', checked: true },
+  //   { label: 'Item4', type: 'radio' },
+  // ];
+
+  // const contextMenu = Menu.buildFromTemplate(menuTemplate);
+  // tray.setToolTip('This is my application.');
+  // tray.setContextMenu(contextMenu);
+
+  tray.on('click', toggleWindow);
+  tray.on('right-click', toggleWindow)
+  tray.on('double-click', toggleWindow)
+};
+
 app.on('ready', async () => {
   await installExtensions();
 
   autoUpdater.checkForUpdates();
   createWindow();
+  createTray();
 });
 
 // Quit when all windows are closed.
@@ -351,6 +401,5 @@ app.on('gpu-process-crashed', () => {
 ipcMain.on('log', (event, arg) => {
   console.error(arg);
 });
-
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
