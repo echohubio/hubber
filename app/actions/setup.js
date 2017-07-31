@@ -18,12 +18,12 @@ export const finalise = iot => dispatch => (
       ],
     }),
   ])
-  .then(() => {
-    dispatch(push('/'));
-  })
-  .then(() => {
-    electron.remote.getCurrentWindow().reload();
-  })
+    .then(() => {
+      dispatch(push('/'));
+    })
+    .then(() => {
+      electron.remote.getCurrentWindow().reload();
+    })
 );
 
 export const dummy = 'foo';

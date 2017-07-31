@@ -113,7 +113,7 @@
     "dev": "yarn run hot-server -- --start-hot",
     "start-hot": "HOT=1 NODE_ENV=development electron -r babel-register -r babel-polyfill ./app/main.development",
     "hot-server": "NODE_ENV=development node --max_old_space_size=2096 -r babel-register server.js",
-    "lint": "eslint .",
+    "lint": "eslint --ignore-path .gitignore .",
     "pack": "yarn run build && build --dir",
     "dist-osx": "yarn run build && build -mw",
     "dist-linux": "yarn run build && build -l",

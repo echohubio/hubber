@@ -92,13 +92,6 @@ const darwinMenu = () => (
           type: 'separator',
         },
         {
-          label: 'Services',
-          submenu: [],
-        },
-        {
-          type: 'separator',
-        },
-        {
           label: 'Hide Hubber',
           accelerator: 'Command+H',
           selector: 'hide:',
@@ -125,44 +118,6 @@ const darwinMenu = () => (
       ],
     },
     {
-      label: 'Edit',
-      submenu: [
-        {
-          label: 'Undo',
-          accelerator: 'Command+Z',
-          selector: 'undo:',
-        },
-        {
-          label: 'Redo',
-          accelerator: 'Shift+Command+Z',
-          selector: 'redo:',
-        },
-        {
-          type: 'separator',
-        },
-        {
-          label: 'Cut',
-          accelerator: 'Command+X',
-          selector: 'cut:',
-        },
-        {
-          label: 'Copy',
-          accelerator: 'Command+C',
-          selector: 'copy:',
-        },
-        {
-          label: 'Paste',
-          accelerator: 'Command+V',
-          selector: 'paste:',
-        },
-        {
-          label: 'Select All',
-          accelerator: 'Command+A',
-          selector: 'selectAll:',
-        },
-      ],
-    },
-    {
       label: 'View',
       submenu: (process.env.NODE_ENV === 'development') ? [
         {
@@ -185,15 +140,15 @@ const darwinMenu = () => (
           },
         },
       ] :
-      [
-        {
-          label: 'Toggle Full Screen',
-          accelerator: 'Ctrl+Command+F',
-          click() {
-            win.setFullScreen(!win.isFullScreen());
+        [
+          {
+            label: 'Toggle Full Screen',
+            accelerator: 'Ctrl+Command+F',
+            click() {
+              win.setFullScreen(!win.isFullScreen());
+            },
           },
-        },
-      ],
+        ],
     },
     {
       label: 'Window',
@@ -220,25 +175,13 @@ const darwinMenu = () => (
         {
           label: 'Learn More',
           click() {
-            shell.openExternal('http://electron.atom.io');
-          },
-        },
-        {
-          label: 'Documentation',
-          click() {
-            shell.openExternal('https://github.com/atom/electron/tree/master/docs#readme');
-          },
-        },
-        {
-          label: 'Community Discussions',
-          click() {
-            shell.openExternal('https://discuss.atom.io/c/electron');
+            shell.openExternal('http://echohub.io');
           },
         },
         {
           label: 'Search Issues',
           click() {
-            shell.openExternal('https://github.com/atom/electron/issues');
+            shell.openExternal('https://github.com/echohubio/hubber/issues');
           },
         },
       ],
@@ -288,15 +231,15 @@ const otherMenu = () => (
           },
         },
       ] :
-      [
-        {
-          label: 'Toggle &Full Screen',
-          accelerator: 'F11',
-          click() {
-            win.setFullScreen(!win.isFullScreen());
+        [
+          {
+            label: 'Toggle &Full Screen',
+            accelerator: 'F11',
+            click() {
+              win.setFullScreen(!win.isFullScreen());
+            },
           },
-        },
-      ],
+        ],
     },
     {
       label: 'Help',
@@ -304,25 +247,13 @@ const otherMenu = () => (
         {
           label: 'Learn More',
           click() {
-            shell.openExternal('http://electron.atom.io');
-          },
-        },
-        {
-          label: 'Documentation',
-          click() {
-            shell.openExternal('https://github.com/atom/electron/tree/master/docs#readme');
-          },
-        },
-        {
-          label: 'Community Discussions',
-          click() {
-            shell.openExternal('https://discuss.atom.io/c/electron');
+            shell.openExternal('https://echohub.io');
           },
         },
         {
           label: 'Search Issues',
           click() {
-            shell.openExternal('https://github.com/atom/electron/issues');
+            shell.openExternal('https://github.com/echohubio/hubber/issues');
           },
         },
       ],
