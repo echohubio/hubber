@@ -25,7 +25,6 @@ const persistConfig = {
 };
 
 class AppProvider extends Component {
-
   constructor() {
     super();
     this.state = { rehydrated: false };

@@ -139,16 +139,7 @@ const darwinMenu = () => (
             win.toggleDevTools();
           },
         },
-      ] :
-        [
-          {
-            label: 'Toggle Full Screen',
-            accelerator: 'Ctrl+Command+F',
-            click() {
-              win.setFullScreen(!win.isFullScreen());
-            },
-          },
-        ],
+      ] : [],
     },
     {
       label: 'Window',
@@ -230,16 +221,7 @@ const otherMenu = () => (
             win.toggleDevTools();
           },
         },
-      ] :
-        [
-          {
-            label: 'Toggle &Full Screen',
-            accelerator: 'F11',
-            click() {
-              win.setFullScreen(!win.isFullScreen());
-            },
-          },
-        ],
+      ] : [],
     },
     {
       label: 'Help',
