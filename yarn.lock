@@ -3433,9 +3433,9 @@ https-proxy-agent@^2.0.0:
     agent-base "^4.1.0"
     debug "^2.4.1"
 
-hubber-iot@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/hubber-iot/-/hubber-iot-2.0.1.tgz#8f030a314026e86989af9cd92c982c8e71c7b061"
+hubber-iot@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/hubber-iot/-/hubber-iot-2.0.4.tgz#870252db2bcc1ddbd2dd1c90120219d5340ac907"
   dependencies:
     aws-iot-device-sdk "^2.0.1"
     electron-log "^2.2.7"

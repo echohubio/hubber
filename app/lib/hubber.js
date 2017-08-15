@@ -67,7 +67,7 @@ class Hubber {
 
     plugins.push(configPlugin);
 
-    const basePath = path.join(__dirname, '..');
+    const basePath = path.join(__dirname, '..', 'plugins');
     const architectConfig = architect.resolveConfig(plugins, basePath);
 
     return architectConfig;
@@ -91,7 +91,7 @@ class Hubber {
     });
 
     arch.on('plugin', (plugin) => {
-      log.debug(`Loaded plugin: ${plugin.packagePath}`);
+      log.debug(`Loaded plugin: provides: ${plugin.provides} path: ${plugin.packagePath}`);
     });
   }
 }

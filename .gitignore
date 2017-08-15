@@ -14,3 +14,4 @@ data
 app/main.js
 app/main.js.map
 dist
+plugins
