@@ -5,9 +5,7 @@ import { getAccessToken } from '../reducers/auth';
 
 export const setup = () => (dispatch, getState) => {
   const state = getState();
-  console.error(state);
   const session = getAccessToken(state);
-  console.error(session);
 
   phetch.post('https://api.echohub.io/iot/thing')
     .set('Content-Type', 'application/json')
