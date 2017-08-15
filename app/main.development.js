@@ -52,33 +52,11 @@ if (process.env.NODE_ENV === 'production') {
 
 if (process.env.NODE_ENV === 'development') {
   require('electron-debug')(); // eslint-disable-line global-require, import/no-extraneous-dependencies
+
   const path = require('path'); // eslint-disable-line
   const p = path.join(__dirname, '..', 'app', 'node_modules'); // eslint-disable-line
   require('module').globalPaths.push(p); // eslint-disable-line
 }
-
-const installExtensions = async () => {
-  if (process.env.NODE_ENV !== 'development') {
-    return null;
-  }
-
-  const installer = require('electron-devtools-installer'); // eslint-disable-line global-require, import/no-extraneous-dependencies
-
-  const extensions = [
-    'REACT_DEVELOPER_TOOLS',
-    'REDUX_DEVTOOLS',
-  ];
-
-  const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
-
-  // TODO: Use async interation statement.
-  //       Waiting on https://github.com/tc39/proposal-async-iteration
-  //       Promises will fail silently, which isn't what we want in development
-  console.error('c');
-  return Promise
-    .all(extensions.map(name => installer.default(installer[name], forceDownload)))
-    .catch(console.error);
-};
 
 const darwinMenu = () => (
   [
@@ -365,13 +343,11 @@ const createTray = () => {
   // tray.setContextMenu(contextMenu);
 
   tray.on('click', toggleWindow);
-  tray.on('right-click', toggleWindow)
-  tray.on('double-click', toggleWindow)
+  tray.on('right-click', toggleWindow);
+  tray.on('double-click', toggleWindow);
 };
 
 app.on('ready', async () => {
-  await installExtensions();
-
   autoUpdater.checkForUpdates();
   createWindow();
   createTray();
