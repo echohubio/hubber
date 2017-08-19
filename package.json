@@ -9,7 +9,7 @@
     "artifactName": "${name}-${version}.${ext}",
     "copyright": "Copyright © 2017 EchoHub",
     "linux": {
-      "packageCategory": "misc",
+      "category": "Network",
       "target": [
         "dir",
         "deb",
