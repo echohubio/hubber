@@ -192,6 +192,10 @@ architect@^0.1.13:
   version "0.1.13"
   resolved "https://registry.yarnpkg.com/architect/-/architect-0.1.13.tgz#efa78783fd818b64e4c47b0e75eea193520390ba"
 
+architect@johnf/architect#multiple_bases:
+  version "0.1.13"
+  resolved "https://codeload.github.com/johnf/architect/tar.gz/052926e240ec949ea91df6640833a5895a8ce2b7"
+
 archy@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/archy/-/archy-1.0.0.tgz#f9c8c13757cc1dd7bc379ac77b2c62a5c2868c40"
@@ -3535,11 +3539,10 @@ hubber-iot@^2.0.4:
     aws-iot-device-sdk "^2.0.1"
     electron-log "^2.2.7"
 
-hubber-plugins@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/hubber-plugins/-/hubber-plugins-2.0.4.tgz#3cabaaf0fcc21bd4a2fda26ebeb4fbbb979272eb"
+hubber-plugins@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/hubber-plugins/-/hubber-plugins-2.0.8.tgz#22a68170855c26b515bcfd7ff00e99abd5df76c2"
   dependencies:
-    electron "^1.7.5"
     electron-log "^2.2.7"
     npmi "^3.0.0"
 

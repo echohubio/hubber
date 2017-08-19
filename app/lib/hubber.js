@@ -1,7 +1,7 @@
-import { app as electronApp } from 'electron'; // eslint-disable-line i
-import path from 'path';
+import { remote } from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
 import architect from 'architect';
 import log from 'electron-log';
+import path from 'path';
 
 class Hubber {
   constructor(store) {
@@ -68,8 +68,11 @@ class Hubber {
 
     plugins.push(configPlugin);
 
-    const basePath = path.join(electronApp.getPath('userData'), 'plugins');
-    const architectConfig = architect.resolveConfig(plugins, basePath);
+    const basePaths = [
+      path.join(remote.app.getPath('userData'), 'hubber-plugins'),
+      path.join(__dirname, '..'),
+    ];
+    const architectConfig = architect.resolveConfig(plugins, basePaths);
 
     return architectConfig;
   }
