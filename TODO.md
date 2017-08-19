@@ -1,5 +1,7 @@
 # TODO
 
+
+* Move devtron out of production
 * Make official plugins dependencies
 * Retry on IOT shadow publish fail
 * https://blog.dcpos.ch/how-to-make-your-electron-app-sexy

@@ -8,7 +8,7 @@ let menu;
 let win;
 let tray;
 
-require('electron-debug')({ showDevTools: true }); // eslint-disable-line global-require, import/no-extraneous-dependencies
+require('electron-debug')({ enabled: true, showDevTools: true });
 
 log.transports.console.level = 'debug';
 

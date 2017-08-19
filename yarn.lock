@@ -188,10 +188,6 @@ aproba@^1.0.3, aproba@^1.1.1, aproba@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.1.2.tgz#45c6629094de4e96f693ef7eab74ae079c240fc1"
 
-architect@^0.1.13:
-  version "0.1.13"
-  resolved "https://registry.yarnpkg.com/architect/-/architect-0.1.13.tgz#efa78783fd818b64e4c47b0e75eea193520390ba"
-
 architect@johnf/architect#multiple_bases:
   version "0.1.13"
   resolved "https://codeload.github.com/johnf/architect/tar.gz/052926e240ec949ea91df6640833a5895a8ce2b7"
