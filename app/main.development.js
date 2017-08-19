@@ -8,7 +8,7 @@ let menu;
 let win;
 let tray;
 
-require('electron-debug')({ enabled: true, showDevTools: true });
+require('electron-debug')({ showDevTools: true });
 
 log.transports.console.level = 'debug';
 
@@ -51,6 +51,19 @@ if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support'); // eslint-disable-line global-require,
   sourceMapSupport.install();
 }
+
+const installExtensions = async () => {
+  if (process.env.NODE_ENV !== 'development') {
+    return null;
+  }
+
+  const { default: installExt, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS, REACT_PERF } = require('electron-devtools-installer'); // eslint-disable-line global-require, max-len
+
+  return installExt(REACT_DEVELOPER_TOOLS)
+    .then(() => installExt(REDUX_DEVTOOLS))
+    .then(() => installExt(REACT_PERF))
+    .catch(err => console.error('An error occurred: ', err));
+};
 
 const darwinMenu = () => (
   [
@@ -343,6 +356,7 @@ const createTray = () => {
 };
 
 app.on('ready', async () => {
+  await installExtensions();
   autoUpdater.checkForUpdates();
   createWindow();
   createTray();

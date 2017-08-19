@@ -78,9 +78,8 @@ class Hubber {
   }
 
   startArchitect() {
-    log.debug('Creating Architect');
-
     const config = this.architectConfig();
+
     const arch = architect.createApp(config, (err, app) => {
       if (err) {
         // TODO: Show some error in web app

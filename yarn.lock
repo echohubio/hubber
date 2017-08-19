@@ -22,6 +22,10 @@
     "7zip-bin-mac" "^1.0.1"
     "7zip-bin-win" "^2.1.0"
 
+"7zip@0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/7zip/-/7zip-0.0.6.tgz#9cafb171af82329490353b4816f03347aa150a30"
+
 "@types/node@^7.0.18":
   version "7.0.33"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.33.tgz#ae3c53ad01d7e9d62c7f1a85c5f7500d59b9d25b"
@@ -190,7 +194,7 @@ aproba@^1.0.3, aproba@^1.1.1, aproba@~1.1.2:
 
 architect@johnf/architect#multiple_bases:
   version "0.1.13"
-  resolved "https://codeload.github.com/johnf/architect/tar.gz/052926e240ec949ea91df6640833a5895a8ce2b7"
+  resolved "https://codeload.github.com/johnf/architect/tar.gz/43f65c3ab1915ba72a90cb6fa29b6e34afdd950e"
 
 archy@~1.0.0:
   version "1.0.0"
@@ -1792,6 +1796,10 @@ cross-spawn@^5.1.0:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
+cross-unzip@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/cross-unzip/-/cross-unzip-0.0.2.tgz#5183bc47a09559befcf98cc4657964999359372f"
+
 cryptiles@2.x.x:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/cryptiles/-/cryptiles-2.0.5.tgz#3bdfecdc608147c1c67202fa291e7dca59eaa3b8"
@@ -2322,6 +2330,15 @@ electron-debug@^1.4.0:
   dependencies:
     electron-is-dev "^0.3.0"
     electron-localshortcut "^3.0.0"
+
+electron-devtools-installer@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/electron-devtools-installer/-/electron-devtools-installer-2.2.0.tgz#9813e6811afcd69ddca3cae5416db72ea7ecfb6a"
+  dependencies:
+    "7zip" "0.0.6"
+    cross-unzip "0.0.2"
+    rimraf "^2.5.2"
+    semver "^5.3.0"
 
 electron-download-tf@4.3.1:
   version "4.3.1"
