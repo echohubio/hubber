@@ -8,6 +8,8 @@ let menu;
 let win;
 let tray;
 
+require('electron-debug')({ showDevTools: true }); // eslint-disable-line global-require, import/no-extraneous-dependencies
+
 log.transports.console.level = 'debug';
 
 // TODO does this replace everything?
@@ -48,10 +50,6 @@ autoUpdater.on('update-downloaded', (info) => {
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support'); // eslint-disable-line global-require,
   sourceMapSupport.install();
-}
-
-if (process.env.NODE_ENV === 'development') {
-  require('electron-debug')(); // eslint-disable-line global-require, import/no-extraneous-dependencies
 }
 
 const darwinMenu = () => (

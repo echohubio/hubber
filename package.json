@@ -120,7 +120,7 @@
     "lint": "eslint --ignore-path .gitignore .",
     "pack": "yarn run build && build --dir",
     "dist-osx": "yarn run build && build -mw",
-    "dist-linux": "yarn run build && build -l",
+    "dist-linux": "yarn run build && build -l --ia32 --x64",
     "release": "package"
   },
   "version": "0.0.2"
