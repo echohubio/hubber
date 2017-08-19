@@ -8,6 +8,11 @@
     "productName": "EchoHub Hubber",
     "artifactName": "${name}-${version}.${ext}",
     "copyright": "Copyright © 2017 EchoHub",
+    "files": [
+      "app/dist",
+      "app/icons",
+      "app/main.js"
+    ],
     "linux": {
       "category": "Network",
       "target": [

@@ -323,7 +323,8 @@ const toggleWindow = () => {
 
 
 const createTray = () => {
-  tray = new Tray('build/icon.png');
+  const trayIcon = path.join(__dirname, 'icons', 'icon.png');
+  tray = new Tray(trayIcon);
 
   // const menuTemplate = [
   //   { label: 'Item1', type: 'radio' },
