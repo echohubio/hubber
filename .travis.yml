@@ -1,37 +1,18 @@
 osx_image: xcode8.3
 
-dist: trusty
-sudo: false
-
-language: c
-
-matrix:
-  include:
-    - os: osx
-    - os: linux
-      env: CC=clang CXX=clang++ npm_config_clang=1
-      compiler: clang
+language: node_js
+node_js:
+- "lts/*"
 
 cache:
   yarn: true
   bundler: true
   directories:
-    - node_modules
     - $HOME/.electron
-    - $HOME/.cache
-    - vendor/bundle
-
-addons:
-  apt:
-    packages:
-      - icnsutils
-      - graphicsmagick
-      - xz-utils
-      - rpm
+      # - $HOME/.cache
+      # - vendor/bundle
 
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - export PATH=$HOME/.yarn/bin:$PATH
   - echo $GPG_SECRET_KEYS | base64 --decode | gpg --import
   - case $TRAVIS_BRANCH in
       "production")
@@ -45,10 +26,11 @@ before_install:
     esac;
   - sed -i.bak "s/ECHOHUB_BUCKET/$(cat bucket)/" package.json
   - sed -i.bak "s/ECHOHUB_DOMAIN/$(cat domain)/" package.json
+  - brew install rpm
 
-install:
-  - yarn install
-  - bundle --deployment
+# install:
+#   - yarn install
+#   - bundle --deployment
 
 script:
   - yarn run dist
