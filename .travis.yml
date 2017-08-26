@@ -26,10 +26,7 @@ before_install:
   - sed -i.bak "s/ECHOHUB_BUCKET/$(cat bucket)/" package.json
   - sed -i.bak "s/ECHOHUB_DOMAIN/$(cat domain)/" package.json
   - brew install rpm
-  - killall gpg-agent
-  - gpg-agent --homedir /Users/travis/.gnupg --daemon --allow-preset-passphrase
-  - echo $GPG_PASSPHRASE | /usr/local/Cellar/gnupg/2.1.21/libexec/gpg-preset-passphrase --preset 54BCB63DE6BC2E810E828FA4C2E65758B35E4A65
-  - echo $GPG_SECRET_KEYS | base64 --decode | GPG_TTY=$(tty) gpg --import
+  - echo $GPG_SECRET_KEYS | base64 --decode | GPG_TTY=$(tty) gpg --import --batch
 
 # install:
 #   - yarn install
@@ -39,4 +36,4 @@ script:
   - yarn run dist
 
 after_script:
-  - deb-s3 upload --bucket=$(cat bucket) --prefix=debian --codename=ubuntu --sign=$DEBSIGN_ID dist/*deb
+  - echo $GPG_PASSPHRASE | deb-s3 upload --bucket=$(cat bucket) --prefix=debian --codename=ubuntu --sign=$DEBSIGN_ID --gpg-options='--passphrase-fd 0' dist/*deb
