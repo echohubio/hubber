@@ -11,6 +11,7 @@ cache:
   directories:
     - $HOME/.electron
     - $HOME/Library/Caches/Homebrew
+    - vendor/bundle
 
 before_install:
   - case $TRAVIS_BRANCH in
