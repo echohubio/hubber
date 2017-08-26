@@ -6,7 +6,6 @@
   "build": {
     "appId": "io.echohub.hubber",
     "productName": "EchoHub Hubber",
-    "artifactName": "${name}-${version}.${ext}",
     "copyright": "Copyright © 2017 EchoHub",
     "files": [
       "app/dist",
