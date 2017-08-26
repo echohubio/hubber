@@ -28,7 +28,7 @@ before_install:
   - brew install rpm
   - killall gpg-agent
   - gpg-agent --homedir /Users/travis/.gnupg --daemon --allow-preset-passphrase
-  - echo $GPG_PASSPHRASE | /usr/local/Cellar/gnupg/2.1.21/libexec/gpg-preset-passphrase --preset 8A636ABAC529E6336AF85CAF7F1ADEE5B12A9FB4
+  - echo $GPG_PASSPHRASE | /usr/local/Cellar/gnupg/2.1.21/libexec/gpg-preset-passphrase --preset 54BCB63DE6BC2E810E828FA4C2E65758B35E4A65
   - echo $GPG_SECRET_KEYS | base64 --decode | GPG_TTY=$(tty) gpg --import
 
 # install:
