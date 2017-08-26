@@ -14,7 +14,7 @@ cache:
       # - vendor/bundle
 
 before_install:
-  - echo $GPG_SECRET_KEYS | base64 --decode | gpg --import
+  - echo $GPG_SECRET_KEYS | base64 --decode | GPG_TTY=$(tty) gpg --import
   - case $TRAVIS_BRANCH in
       "production")
         echo -n echohub-packages-production > bucket;
