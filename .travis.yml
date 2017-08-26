@@ -34,4 +34,4 @@ script:
   - yarn run dist
 
 after_script:
-  - echo $GPG_PASSPHRASE | bundle exec deb-s3 upload --bucket=$(cat bucket) --prefix=debian --codename=ubuntu --sign=$DEBSIGN_ID --gpg-options='--passphrase-fd 0' dist/*deb
+  - echo $GPG_PASSPHRASE | GPG_TTY=$(tty) bundle exec deb-s3 upload --bucket=$(cat bucket) --prefix=debian --codename=ubuntu --sign=$DEBSIGN_ID --gpg-options='--passphrase-fd 0' dist/*deb
