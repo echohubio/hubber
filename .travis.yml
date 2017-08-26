@@ -27,13 +27,10 @@ before_install:
   - sed -i.bak "s/ECHOHUB_DOMAIN/$(cat domain)/" package.json
   - brew install rpm
   - echo $GPG_SECRET_KEYS | base64 --decode | GPG_TTY=$(tty) gpg --import --batch
-
-# install:
-#   - yarn install
-#   - bundle --deployment
+  - bundle --deployment
 
 script:
   - yarn run dist
 
 after_script:
-  - echo $GPG_PASSPHRASE | deb-s3 upload --bucket=$(cat bucket) --prefix=debian --codename=ubuntu --sign=$DEBSIGN_ID --gpg-options='--passphrase-fd 0' dist/*deb
+  - echo $GPG_PASSPHRASE | bundle exec deb-s3 upload --bucket=$(cat bucket) --prefix=debian --codename=ubuntu --sign=$DEBSIGN_ID --gpg-options='--passphrase-fd 0' dist/*deb
