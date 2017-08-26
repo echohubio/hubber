@@ -55,11 +55,7 @@ install:
     fi;
 
 script:
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
-      yarn run dist-osx;
-    else
-      yarn run dist-linux;
-    fi
+  - yarn run dist
 
 after_script:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
