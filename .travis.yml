@@ -10,8 +10,7 @@ cache:
   bundler: true
   directories:
     - $HOME/.electron
-      # - $HOME/.cache
-      # - vendor/bundle
+    - $HOME/Library/Caches/Homebrew
 
 before_install:
   - case $TRAVIS_BRANCH in
@@ -27,6 +26,7 @@ before_install:
   - sed -i.bak "s/ECHOHUB_BUCKET/$(cat bucket)/" package.json
   - sed -i.bak "s/ECHOHUB_DOMAIN/$(cat domain)/" package.json
   - brew install rpm
+  - killall gpg-agent
   - gpg-agent --homedir /Users/travis/.gnupg --daemon --allow-preset-passphrase
   - echo $GPG_PASSPHRASE | /usr/local/Cellar/gnupg/2.1.21/libexec/gpg-preset-passphrase --preset 8A636ABAC529E6336AF85CAF7F1ADEE5B12A9FB4
   - echo $GPG_SECRET_KEYS | base64 --decode | GPG_TTY=$(tty) gpg --import
