@@ -128,5 +128,5 @@
     "dist": "yarn run build && electron-builder -mwl --x64 --ia32",
     "release": "package"
   },
-  "version": "0.0.3"
+  "version": "0.0.4"
 }
