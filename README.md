@@ -24,7 +24,7 @@ After checking out the repo, run `npm test` to run the tests.
 
 To release a new version:
 
-* Update package.json to new version
+* Update package.json to new version *Don't use yarn version*
 
 Every commit will push to GitHub release with that version as well as staging S3
 buckets.
