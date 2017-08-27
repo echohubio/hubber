@@ -24,18 +24,15 @@ After checking out the repo, run `npm test` to run the tests.
 
 To release a new version:
 
-* yarn test
-* yarn version
+* Update package.json to new version
 
-This will run the tests, update the version, create a git tag for the version, push git commits and tags. Publish the module file to [npmjs.com](https://npmjs.com).
+Every commit will push to GitHub release with that version as well as staging S3
+buckets.
 
-## Packaging
+For final release
 
-You will need the following dependencies
-
-``` bash
-sudo apt-get install --no-install-recommends -y icnsutils graphicsmagick xz-utils rpm
-```
+* Merge to production branch
+* Publish the release on GitHub when done.
 
 ## Contributing
 
