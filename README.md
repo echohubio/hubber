@@ -33,6 +33,7 @@ For final release
 
 * Merge to production branch
 * Publish the release on GitHub when done.
+* Bump the version.
 
 ## Contributing
 
