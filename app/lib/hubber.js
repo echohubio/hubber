@@ -14,20 +14,30 @@ class Hubber {
   static setupIoT(services) {
     const thingShadows = services.iot.thingShadows;
 
-    thingShadows.on('message', (topic, payloadJSON) => {
-      log.debug(`received message on topic ${topic}`, payloadJSON.toString());
-      const pluginName = topic.split('/')[2];
-      const payload = JSON.parse(payloadJSON);
+    thingShadows.on('message', (requestTopic, requestPayloadJSON) => {
+      log.debug(`received message on topic ${requestTopic}`, requestPayloadJSON.toString());
+      const pluginName = requestTopic.split('/')[2];
+      const requestPayload = JSON.parse(requestPayloadJSON);
+
+      const responseTopic = `${requestTopic}/response`;
+      let responsePayload = null;
 
       const plugin = services[pluginName];
       if (!plugin) {
         log.info(`plugin ${pluginName} not installed`);
         // TODO: log this and expose in web portal somehow or notify the user
-
-        return;
+        responsePayload = {
+          status: 'error',
+          message: 'plugin not installed',
+          error_type: 'PLUGIN_NOT_INSTALLED',
+        };
+      } else {
+        responsePayload = plugin.execute(requestPayload);
       }
 
-      plugin.execute(payload);
+      const responsePayloadJSON = JSON.stringify(responsePayload);
+
+      thingShadows.publish(responseTopic, responsePayloadJSON);
     });
   }
 
