@@ -1,10 +1,11 @@
 import electronOauth2 from 'electron-oauth2';
 
+const clientSecret = process.env.NODE_ENV === 'production' ? 'd659c658-0b48-4836-a793-a2f9a6fd71d4' : '6d859f7e-1fe4-4349-8954-8809276cdc50';
 const config = {
   clientId: 'io.echohub.hubber',
-  clientSecret: 'd659c658-0b48-4836-a793-a2f9a6fd71d4',
-  authorizationUrl: 'https://www.echohub.io/alexa/link',
-  tokenUrl: 'https://api.echohub.io/oauth2/token',
+  clientSecret,
+  authorizationUrl: `${process.env.REACT_APP_WWW_URL}/alexa/link`,
+  tokenUrl: `${process.env.REACT_APP_API_URL}/oauth2/token`,
 };
 
 export const authenticate = () => (dispatch) => {

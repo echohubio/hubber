@@ -7,7 +7,7 @@ export const setup = () => (dispatch, getState) => {
   const state = getState();
   const session = getAccessToken(state);
 
-  phetch.post('https://api.echohub.io/iot/thing')
+  phetch.post(`${process.env.REACT_APP_API_URL}/iot/thing`)
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json')
     .set('Authorization', session)

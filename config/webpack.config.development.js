@@ -6,7 +6,14 @@
 
 import webpack from 'webpack';
 import merge from 'webpack-merge';
+import dotenv from 'dotenv';
+
+import getClientEnvironment from './env';
+
 import baseConfig from './webpack.config.base';
+
+dotenv.config({ silent: true });
+const env = getClientEnvironment();
 
 const port = process.env.PORT || 3001;
 
@@ -46,9 +53,7 @@ export default merge(baseConfig, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
-    }),
+    new webpack.DefinePlugin(env),
     new webpack.IgnorePlugin(/vertx/),
   ],
 

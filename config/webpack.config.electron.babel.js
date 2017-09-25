@@ -5,7 +5,13 @@
 import webpack from 'webpack';
 import merge from 'webpack-merge';
 // import BabiliPlugin from 'babili-webpack-plugin';
+import dotenv from 'dotenv';
+
 import baseConfig from './webpack.config.base';
+import getClientEnvironment from './env';
+
+dotenv.config({ silent: true });
+const env = getClientEnvironment();
 
 export default merge(baseConfig, {
   devtool: 'source-map',
@@ -36,11 +42,7 @@ export default merge(baseConfig, {
      * NODE_ENV should be production so that modules do not perform certain
      * development checks
      */
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-      },
-    }),
+    new webpack.DefinePlugin(env),
   ],
 
   /**
