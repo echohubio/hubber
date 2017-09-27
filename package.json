@@ -118,7 +118,7 @@
     "build": "yarn run build-main && yarn run build-renderer",
     "build-main": "NODE_ENV=production webpack --config config/webpack.config.electron.babel.js --progress --profile --colors",
     "build-renderer": "NODE_ENV=production webpack --config config/webpack.config.production.babel.js --progress --profile --colors",
-    "dev": "yarn run hot-server -- --start-hot",
+    "dev": "yarn run hot-server --start-hot",
     "start-hot": "HOT=1 NODE_ENV=development electron -r babel-register -r babel-polyfill ./app/main.development",
     "hot-server": "NODE_ENV=development node --max_old_space_size=2096 -r babel-register server.js",
     "lint": "eslint --ignore-path .gitignore .",
