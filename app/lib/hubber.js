@@ -12,9 +12,9 @@ class Hubber {
   }
 
   static setupIoT(services) {
-    const thingShadows = services.iot.thingShadows;
+    const device = services.iot.device;
 
-    thingShadows.on('message', (requestTopic, requestPayloadJSON) => {
+    device.on('message', (requestTopic, requestPayloadJSON) => {
       log.debug(`received message on topic ${requestTopic}`, requestPayloadJSON.toString());
       const pluginName = requestTopic.split('/')[2];
       const requestPayload = JSON.parse(requestPayloadJSON);
@@ -37,7 +37,7 @@ class Hubber {
 
       const responsePayloadJSON = JSON.stringify(responsePayload);
 
-      thingShadows.publish(responseTopic, responsePayloadJSON);
+      device.publish(responseTopic, responsePayloadJSON);
     });
   }
 

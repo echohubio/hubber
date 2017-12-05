@@ -184,13 +184,13 @@ anymatch@^1.3.0:
     arrify "^1.0.0"
     micromatch "^2.1.5"
 
-app-package-builder@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/app-package-builder/-/app-package-builder-1.0.1.tgz#fb4e0f2f444f8435d0b963c55902dfd32337b11f"
+app-package-builder@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/app-package-builder/-/app-package-builder-1.0.3.tgz#39eeb95d3e67c9e0444c20bbcec6f3ea03ce2033"
   dependencies:
     bluebird-lst "^1.0.3"
-    builder-util "2.0.2"
-    builder-util-runtime "1.0.2"
+    builder-util "^2.0.5"
+    builder-util-runtime "^1.0.5"
     fs-extra-p "^4.4.2"
     int64-buffer "^0.1.9"
     js-yaml "^3.10.0"
@@ -1007,8 +1007,8 @@ babel-preset-latest@^6.16.0:
     babel-preset-es2017 "^6.24.1"
 
 babel-preset-react-app@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/babel-preset-react-app/-/babel-preset-react-app-3.0.2.tgz#d062fca5dce68ed9c2615f2fecbc08861720f8e5"
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/babel-preset-react-app/-/babel-preset-react-app-3.0.3.tgz#5716d6a8c7354db0cc2707207ab6ceb3b2e0a825"
   dependencies:
     babel-plugin-dynamic-import-node "1.0.2"
     babel-plugin-syntax-dynamic-import "6.18.0"
@@ -1324,15 +1324,15 @@ buffer@4.9.1, buffer@^4.3.0, buffer@^4.9.0:
     ieee754 "^1.1.4"
     isarray "^1.0.0"
 
-builder-util-runtime@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/builder-util-runtime/-/builder-util-runtime-1.0.2.tgz#b10ca7913159f219b1707d46f6d3139825ee4605"
+builder-util-runtime@1.0.5, builder-util-runtime@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/builder-util-runtime/-/builder-util-runtime-1.0.5.tgz#7f2c3eb285230ae60c34f360a9235b08af88f519"
   dependencies:
     bluebird-lst "^1.0.3"
     debug "^3.0.1"
     fs-extra-p "^4.4.2"
 
-builder-util-runtime@1.0.4, builder-util-runtime@^1.0.2, builder-util-runtime@^1.0.3:
+builder-util-runtime@^1.0.2, builder-util-runtime@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/builder-util-runtime/-/builder-util-runtime-1.0.4.tgz#4de588094f25fa484e6def0ec4a9d7b6093cf52f"
   dependencies:
@@ -1340,13 +1340,13 @@ builder-util-runtime@1.0.4, builder-util-runtime@^1.0.2, builder-util-runtime@^1
     debug "^3.0.1"
     fs-extra-p "^4.4.2"
 
-builder-util@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/builder-util/-/builder-util-2.0.2.tgz#407e2d43060ff86f7ec189d9fc7a12db138c5849"
+builder-util@2.0.5, builder-util@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/builder-util/-/builder-util-2.0.5.tgz#ee75a98b38a2aaa60f12290300f06d879bfdef6d"
   dependencies:
     "7zip-bin" "^2.2.4"
     bluebird-lst "^1.0.3"
-    builder-util-runtime "^1.0.2"
+    builder-util-runtime "^1.0.5"
     chalk "^2.1.0"
     debug "^3.0.1"
     fs-extra-p "^4.4.2"
@@ -1361,7 +1361,7 @@ builder-util@2.0.2:
     temp-file "^2.0.3"
     tunnel-agent "^0.6.0"
 
-builder-util@2.0.3, builder-util@^2.0.2, builder-util@^2.0.3:
+builder-util@^2.0.2, builder-util@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/builder-util/-/builder-util-2.0.3.tgz#f0a6ed6078217e1393ed02d66090e89066a0a97b"
   dependencies:
@@ -2033,7 +2033,7 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
-debug@2, debug@2.6.8, debug@^2.1.3, debug@^2.2.0, debug@^2.4.1, debug@^2.6.8:
+debug@2, debug@^2.1.3, debug@^2.2.0, debug@^2.4.1, debug@^2.6.8:
   version "2.6.8"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
   dependencies:
@@ -2044,6 +2044,12 @@ debug@2.2.0:
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.2.0.tgz#f87057e995b1a1f6ae6a4960664137bc56f039da"
   dependencies:
     ms "0.7.1"
+
+debug@2.6.9:
+  version "2.6.9"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
+  dependencies:
+    ms "2.0.0"
 
 debug@^3.0.0:
   version "3.0.0"
@@ -2287,15 +2293,15 @@ ejs@^2.5.7:
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.5.7.tgz#cc872c168880ae3c7189762fd5ffc00896c9518a"
 
 electron-builder@^19.24.1:
-  version "19.30.1"
-  resolved "https://registry.yarnpkg.com/electron-builder/-/electron-builder-19.30.1.tgz#5e163f0cb88cbe5632f921d45a1d5a31b85a806e"
+  version "19.31.2"
+  resolved "https://registry.yarnpkg.com/electron-builder/-/electron-builder-19.31.2.tgz#248db19f353d9df553a90c44cba26a856cad8adb"
   dependencies:
     "7zip-bin" "^2.2.4"
-    app-package-builder "1.0.1"
+    app-package-builder "1.0.3"
     asar-integrity "0.2.1"
     bluebird-lst "^1.0.3"
-    builder-util "2.0.3"
-    builder-util-runtime "1.0.4"
+    builder-util "2.0.5"
+    builder-util-runtime "1.0.5"
     chalk "^2.1.0"
     chromium-pickle-js "^0.2.0"
     cuint "^0.2.2"
@@ -2449,8 +2455,8 @@ electron-updater@^2.8.7:
     xelement "^1.0.16"
 
 electron@^1.7.5:
-  version "1.7.5"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-1.7.5.tgz#065a3102bf8b87102df50c50985fefe6c569045b"
+  version "1.7.8"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-1.7.8.tgz#27b791a6895171a7d52991b99442cdbd10a3539d"
   dependencies:
     "@types/node" "^7.0.18"
     electron-download "^3.0.1"
@@ -2699,8 +2705,8 @@ eslint-plugin-jsx-a11y@^5.1.1:
     jsx-ast-utils "^1.4.0"
 
 eslint-plugin-react@^7.2.0:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.3.0.tgz#ca9368da36f733fbdc05718ae4e91f778f38e344"
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.4.0.tgz#300a95861b9729c087d362dd64abcc351a74364a"
   dependencies:
     doctrine "^2.0.0"
     has "^1.0.1"
@@ -2800,6 +2806,10 @@ etag@~1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.0.tgz#6f631aef336d6c46362b51764044ce216be3c051"
 
+etag@~1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
+
 event-emitter@~0.3.5:
   version "0.3.5"
   resolved "https://registry.yarnpkg.com/event-emitter/-/event-emitter-0.3.5.tgz#df8c69eef1647923c7157b9ce83840610b02cc39"
@@ -2853,8 +2863,8 @@ expand-range@^1.8.1:
     fill-range "^2.1.0"
 
 express@^4.15.4:
-  version "4.15.4"
-  resolved "https://registry.yarnpkg.com/express/-/express-4.15.4.tgz#032e2253489cf8fce02666beca3d11ed7a2daed1"
+  version "4.15.5"
+  resolved "https://registry.yarnpkg.com/express/-/express-4.15.5.tgz#670235ca9598890a5ae8170b83db722b842ed927"
   dependencies:
     accepts "~1.3.3"
     array-flatten "1.1.1"
@@ -2862,13 +2872,13 @@ express@^4.15.4:
     content-type "~1.0.2"
     cookie "0.3.1"
     cookie-signature "1.0.6"
-    debug "2.6.8"
+    debug "2.6.9"
     depd "~1.1.1"
     encodeurl "~1.0.1"
     escape-html "~1.0.3"
     etag "~1.8.0"
-    finalhandler "~1.0.4"
-    fresh "0.5.0"
+    finalhandler "~1.0.6"
+    fresh "0.5.2"
     merge-descriptors "1.0.1"
     methods "~1.1.2"
     on-finished "~2.3.0"
@@ -2877,8 +2887,8 @@ express@^4.15.4:
     proxy-addr "~1.1.5"
     qs "6.5.0"
     range-parser "~1.2.0"
-    send "0.15.4"
-    serve-static "1.12.4"
+    send "0.15.6"
+    serve-static "1.12.6"
     setprototypeof "1.0.3"
     statuses "~1.3.1"
     type-is "~1.6.15"
@@ -2998,15 +3008,15 @@ fill-range@^2.1.0:
     repeat-element "^1.1.2"
     repeat-string "^1.5.2"
 
-finalhandler@~1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.0.4.tgz#18574f2e7c4b98b8ae3b230c21f201f31bdb3fb7"
+finalhandler@~1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.0.6.tgz#007aea33d1a4d3e42017f624848ad58d212f814f"
   dependencies:
-    debug "2.6.8"
+    debug "2.6.9"
     encodeurl "~1.0.1"
     escape-html "~1.0.3"
     on-finished "~2.3.0"
-    parseurl "~1.3.1"
+    parseurl "~1.3.2"
     statuses "~1.3.1"
     unpipe "~1.0.0"
 
@@ -3081,9 +3091,9 @@ forwarded@~0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.0.tgz#19ef9874c4ae1c297bcf078fde63a09b66a84363"
 
-fresh@0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.0.tgz#f474ca5e6a9246d6fd8e0953cfa9b9c805afa78e"
+fresh@0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
 
 from2@^1.3.0:
   version "1.3.0"
@@ -3531,16 +3541,16 @@ https-proxy-agent@^2.0.0:
     agent-base "^4.1.0"
     debug "^2.4.1"
 
-hubber-iot@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/hubber-iot/-/hubber-iot-3.0.1.tgz#767c7bc4c0bbec696de6f1dc10c29985e5ba68ca"
+hubber-iot@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/hubber-iot/-/hubber-iot-4.0.0.tgz#c47dbe2103a91243cc68c4ebd00ed6b6d39275c5"
   dependencies:
     aws-iot-device-sdk "^2.0.1"
     electron-log "^2.2.7"
 
-hubber-plugins@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/hubber-plugins/-/hubber-plugins-3.0.0.tgz#c73d6675eb4266f45b3f46c499fe627a68939bc9"
+hubber-plugins@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/hubber-plugins/-/hubber-plugins-4.0.0.tgz#4a3f855b54a69a93ecb4d0ba4e2d7d2b477e5ec5"
   dependencies:
     electron-log "^2.2.7"
     npmi "^3.0.0"
@@ -5110,6 +5120,10 @@ parseurl@~1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.1.tgz#c8ab8c9223ba34888aa64a297b28853bec18da56"
 
+parseurl@~1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.2.tgz#fc289d4ed8993119460c156253262cdc8de65bf3"
+
 path-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/path-browserify/-/path-browserify-0.0.0.tgz#a0b870729aae214005b7d5032ec2cbbb0fb4451a"
@@ -5704,8 +5718,8 @@ react-deep-force-update@^2.0.1:
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-2.0.1.tgz#4f7f6c12c3e7de42f345992a3c518236fa1ecad3"
 
 react-dom@^15.4.2:
-  version "15.6.1"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.1.tgz#2cb0ed4191038e53c209eb3a79a23e2a4cf99470"
+  version "15.6.2"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.2.tgz#41cfadf693b757faf2708443a1d1fd5a02bef730"
   dependencies:
     fbjs "^0.8.9"
     loose-envify "^1.1.0"
@@ -5773,8 +5787,8 @@ react-router@^3.0.2:
     warning "^3.0.0"
 
 react@^15.4.2:
-  version "15.6.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-15.6.1.tgz#baa8434ec6780bde997cdc380b79cd33b96393df"
+  version "15.6.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-15.6.2.tgz#dba0434ab439cfe82f108f0f511663908179aa72"
   dependencies:
     create-react-class "^15.6.0"
     fbjs "^0.8.9"
@@ -5960,8 +5974,8 @@ redux-persist-node-storage@^1.0.2:
     node-localstorage "^1.3.0"
 
 redux-persist@^4.9.1:
-  version "4.10.0"
-  resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-4.10.0.tgz#6252cabc2cdec1e9b65b16da3c0d1f44be06a60e"
+  version "4.10.1"
+  resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-4.10.1.tgz#4fb2b789942f10f56d51cc7ad068d9d6beb46124"
   dependencies:
     json-stringify-safe "^5.0.1"
     lodash "^4.17.4"
@@ -6228,17 +6242,17 @@ semver-diff@^2.0.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
 
-send@0.15.4:
-  version "0.15.4"
-  resolved "https://registry.yarnpkg.com/send/-/send-0.15.4.tgz#985faa3e284b0273c793364a35c6737bd93905b9"
+send@0.15.6:
+  version "0.15.6"
+  resolved "https://registry.yarnpkg.com/send/-/send-0.15.6.tgz#20f23a9c925b762ab82705fe2f9db252ace47e34"
   dependencies:
-    debug "2.6.8"
+    debug "2.6.9"
     depd "~1.1.1"
     destroy "~1.0.4"
     encodeurl "~1.0.1"
     escape-html "~1.0.3"
-    etag "~1.8.0"
-    fresh "0.5.0"
+    etag "~1.8.1"
+    fresh "0.5.2"
     http-errors "~1.6.2"
     mime "1.3.4"
     ms "2.0.0"
@@ -6246,14 +6260,14 @@ send@0.15.4:
     range-parser "~1.2.0"
     statuses "~1.3.1"
 
-serve-static@1.12.4:
-  version "1.12.4"
-  resolved "https://registry.yarnpkg.com/serve-static/-/serve-static-1.12.4.tgz#9b6aa98eeb7253c4eedc4c1f6fdbca609901a961"
+serve-static@1.12.6:
+  version "1.12.6"
+  resolved "https://registry.yarnpkg.com/serve-static/-/serve-static-1.12.6.tgz#b973773f63449934da54e5beba5e31d9f4211577"
   dependencies:
     encodeurl "~1.0.1"
     escape-html "~1.0.3"
-    parseurl "~1.3.1"
-    send "0.15.4"
+    parseurl "~1.3.2"
+    send "0.15.6"
 
 set-blocking@^2.0.0, set-blocking@~2.0.0:
   version "2.0.0"
