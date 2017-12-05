@@ -14,7 +14,7 @@ class Hubber {
   static setupIoT(services) {
     const device = services.iot.device;
 
-    device.on('message', (requestTopic, requestPayloadJSON) => {
+    device.on('message', async (requestTopic, requestPayloadJSON) => {
       log.debug(`received message on topic ${requestTopic}`, requestPayloadJSON.toString());
       const pluginName = requestTopic.split('/')[2];
       const requestPayload = JSON.parse(requestPayloadJSON);
@@ -32,12 +32,18 @@ class Hubber {
           error_type: 'PLUGIN_NOT_INSTALLED',
         };
       } else {
-        responsePayload = plugin.execute(requestPayload);
+        responsePayload = await plugin.execute(requestPayload);
       }
 
-      const responsePayloadJSON = JSON.stringify(responsePayload);
+      const message = {
+        uuid: requestPayload.uuid,
+        response: responsePayload,
+      };
 
-      device.publish(responseTopic, responsePayloadJSON);
+      const messageJSON = JSON.stringify(message);
+
+      log.debug(`publishing ${messageJSON}`);
+      device.publish(responseTopic, messageJSON);
     });
   }
 
@@ -104,7 +110,11 @@ class Hubber {
     });
 
     arch.on('plugin', (plugin) => {
-      log.debug(`Loaded plugin: provides: ${plugin.provides} path: ${plugin.packagePath}`);
+      log.debug(`Loaded plugin: ${plugin.provides} path: ${plugin.packagePath}`);
+    });
+
+    arch.on('error', (error) => {
+      log.error(`Plugin error: ${error}`);
     });
   }
 }
