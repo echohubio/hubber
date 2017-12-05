@@ -57,7 +57,12 @@ const installExtensions = async () => {
     return null;
   }
 
-  const { default: installExt, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS, REACT_PERF } = require('electron-devtools-installer'); // eslint-disable-line global-require, max-len
+  const {
+    default: installExt,
+    REACT_DEVELOPER_TOOLS,
+    REDUX_DEVTOOLS,
+    REACT_PERF,
+  } = require('electron-devtools-installer'); // eslint-disable-line global-require, max-len
 
   return installExt(REACT_DEVELOPER_TOOLS)
     .then(() => installExt(REDUX_DEVTOOLS))
@@ -357,7 +362,9 @@ const createTray = () => {
 
 app.on('ready', async () => {
   await installExtensions();
-  autoUpdater.checkForUpdates();
+  if (process.env.NODE_ENV !== 'development') {
+    autoUpdater.checkForUpdates();
+  }
   createWindow();
   createTray();
 });

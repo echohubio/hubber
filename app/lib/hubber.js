@@ -12,7 +12,7 @@ class Hubber {
   }
 
   static setupIoT(services) {
-    const device = services.iot.device;
+    const { device } = services.iot;
 
     device.on('message', async (requestTopic, requestPayloadJSON) => {
       log.debug(`received message on topic ${requestTopic}`, requestPayloadJSON.toString());

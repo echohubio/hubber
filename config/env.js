@@ -13,21 +13,11 @@ const getClientEnvironment = () => {
     }, {
       // Useful for determining whether we’re running in production mode.
       // Most importantly, it switches React into the correct mode.
-      NODE_ENV: JSON.stringify(
-        process.env.NODE_ENV || 'development',
-      ),
-      REACT_APP_API_URL: JSON.stringify(
-        process.env.REACT_APP_API_URL || 'https://api.staging.echohub.io',
-      ),
-      REACT_APP_WWW_URL: JSON.stringify(
-        process.env.REACT_APP_WWW_URL || 'https://www.staging.echohub.io',
-      ),
-      COGNITO_POOL_ID: JSON.stringify(
-        process.env.COGNITO_POOL_ID,
-      ),
-      COGNITO_CLIENT_ID: JSON.stringify(
-        process.env.COGNITO_CLIENT_ID,
-      ),
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+      REACT_APP_API_URL: JSON.stringify(process.env.REACT_APP_API_URL || 'https://api.staging.echohub.io'),
+      REACT_APP_WWW_URL: JSON.stringify(process.env.REACT_APP_WWW_URL || 'https://www.staging.echohub.io'),
+      COGNITO_POOL_ID: JSON.stringify(process.env.COGNITO_POOL_ID),
+      COGNITO_CLIENT_ID: JSON.stringify(process.env.COGNITO_CLIENT_ID),
     });
   return { 'process.env': processEnv };
 };
