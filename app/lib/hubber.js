@@ -27,9 +27,8 @@ class Hubber {
         log.info(`plugin ${pluginName} not installed`);
         // TODO: log this and expose in web portal somehow or notify the user
         responsePayload = {
-          status: 'error',
+          errorType: 'plugin_missing',
           message: 'plugin not installed',
-          error_type: 'PLUGIN_NOT_INSTALLED',
         };
       } else {
         responsePayload = await plugin.execute(requestPayload);
@@ -42,7 +41,7 @@ class Hubber {
 
       const messageJSON = JSON.stringify(message);
 
-      log.debug(`publishing ${messageJSON}`);
+      log.debug(`response ${messageJSON}`);
       device.publish(responseTopic, messageJSON);
     });
   }
@@ -70,10 +69,15 @@ class Hubber {
             },
 
             addPlugin: (pluginName) => {
-              this.store.dispatch({
-                type: 'PLUGINS_ADD',
-                name: pluginName,
-              });
+              const localState = this.store.getState();
+              const plugin = localState.plugins[pluginName];
+
+              if (!plugin) {
+                this.store.dispatch({
+                  type: 'PLUGINS_ADD',
+                  name: pluginName,
+                });
+              }
             },
           },
         });
