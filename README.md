@@ -18,6 +18,12 @@ TODO: How to run this as a daemon
 hubber
 ```
 
+## Based On
+
+This project should be base lined against
+* project: https://github.com/chentsulin/electron-react-boilerplate
+* 0.13.2 (2018.1.31) + git:586b84 (2018-02-03)
+
 ## Development
 
 After checking out the repo, run `npm test` to run the tests.
